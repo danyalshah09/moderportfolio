@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-                DevName
+                dannyDev.
               </div>
               <p className="text-gray-400 leading-relaxed">
                 Frontend Developer passionate about creating amazing web experiences
@@ -44,7 +44,7 @@ const Footer = () => {
           </div>
 
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 John Doe. All rights reserved. Built with React & Tailwind CSS.</p>
+            <p>&copy; 2025 Danyal Shah. All rights reserved. Built with React & Tailwind CSS.</p>
           </div>
         </div>
       </div>

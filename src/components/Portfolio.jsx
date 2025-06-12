@@ -89,7 +89,7 @@ const Portfolio = () => {
       features: ['Real-time collaboration', 'Rich text editor', 'Cloud sync', 'Offline support', 'Team workspaces']
     },
     {
-  id: 3,
+  id: 5,
   title: 'Writewise',
   shortDescription: 'A full-featured blog management system with admin moderation and social sharing',
   image: './blog1.PNG', // Your actual project screenshot
