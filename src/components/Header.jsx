@@ -150,9 +150,9 @@ const Header = ({ darkMode, toggleDarkMode }) => {
 
               {/* Theme Toggle Button - Desktop */}
               <div className="relative theme-selector">
-                <button
+              <button
                   onClick={toggleThemeSelector}
-                  className="p-2 rounded-full bg-white/20 dark:bg-gray-700/20 backdrop-blur-sm border border-white/30 dark:border-gray-600/30 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/30 transition-all duration-200 hover:scale-110 ml-2"
+                className="p-2 rounded-full bg-white/20 dark:bg-gray-700/20 backdrop-blur-sm border border-white/30 dark:border-gray-600/30 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/30 transition-all duration-200 hover:scale-110 ml-2"
                   aria-label="Toggle theme selector"
                 >
                   {themePreference === 'light' && <Sun size={18} />}
@@ -192,7 +192,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                       {themePreference === 'system' && (
                         <span className="ml-auto text-blue-600">✓</span>
                       )}
-                    </button>
+              </button>
                   </div>
                 )}
               </div>
@@ -235,7 +235,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                         <span className="ml-auto text-blue-600">✓</span>
                       )}
                     </button>
-                    <button
+              <button
                       onClick={() => handleThemeChange('system')}
                       className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
@@ -244,7 +244,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                       {themePreference === 'system' && (
                         <span className="ml-auto text-blue-600">✓</span>
                       )}
-                    </button>
+              </button>
                   </div>
                 )}
               </div>
@@ -318,7 +318,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                       <Moon size={24} className="mb-2" />
                       <span className="text-sm font-medium">Dark</span>
                     </button>
-                    <button
+                  <button
                       onClick={() => handleThemeChange('system')}
                       className={`flex flex-col items-center justify-center p-3 rounded-xl ${
                         themePreference === 'system'
@@ -328,7 +328,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                     >
                       <Monitor size={24} className="mb-2" />
                       <span className="text-sm font-medium">System</span>
-                    </button>
+                  </button>
                   </div>
                 </div>
               </div>

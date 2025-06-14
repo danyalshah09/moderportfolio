@@ -58,7 +58,9 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div className={`min-h-screen transition-colors duration-300 ${
+      darkMode ? 'bg-black' : 'bg-white'
+    }`}>
       <SEO
         title="Danyal Shah - Frontend Developer Portfolio"
         description="Experienced Frontend Developer specializing in React, JavaScript, and modern web technologies. View my portfolio and get in touch for your next project."
