@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import {
   Menu, X, ChevronDown, ExternalLink, Github, Linkedin,
   Mail, Phone, MapPin, Star, Calendar, Briefcase,
@@ -7,7 +8,7 @@ import {
 import SEO from './components/SEO';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import About from './components/About';
+import About from './components/about-section';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
 import Experience from './components/Experience';

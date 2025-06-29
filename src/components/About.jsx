@@ -1,7 +1,9 @@
+"use client";
+
 import React from 'react';
 import { Download } from 'lucide-react';
+import Orb from './Orb'; // Make sure this path is correct based on your folder structure
 
-// About Section Component
 const About = () => {
   return (
     <section id="about" className="py-20 bg-white dark:bg-gray-900">
@@ -11,6 +13,7 @@ const About = () => {
             About Me
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
             <div className="space-y-6">
               <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
                 Passionate Frontend Developer
@@ -33,18 +36,33 @@ const About = () => {
                 </button>
               </div>
             </div>
+
+            {/* Right Section with Orb and Image */}
             <div className="space-y-8">
               <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
-                <h4 className="text-xl font-semibold mb-6 text-gray-800 dark:text-white"></h4>
                 <div className="flex justify-center">
-                  <img
-                    src="/danyal2.jpg"
-                    alt="Danyal Shah - Frontend Developer"
-                    className="w-70 h-90 rounded-full object-cover shadow-lg border-4 border-white dark:border-gray-700 hover:scale-105 transition-transform duration-300"
-                  />
+                  <div className="relative w-64 h-64 rounded-full overflow-hidden">
+                    {/* Orb Background */}
+                    <div className="absolute inset-0 z-0">
+                      <Orb
+                        hoverIntensity={0.5}
+                        rotateOnHover={true}
+                        hue={0}
+                        forceHoverState={false}
+                      />
+                    </div>
+
+                    {/* Profile Image */}
+                    <img
+                      src="/linkedin4.jpg"
+                      alt="Danyal Shah - Frontend Developer"
+                      className="relative z-10 w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-700 hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
+            {/* End of Right Section */}
           </div>
         </div>
       </div>

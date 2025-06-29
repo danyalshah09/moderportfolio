@@ -32,7 +32,6 @@ const Hero = () => {
 
     return () => clearInterval(typeInterval);
   }, [currentIndex]);
-
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Animated Background Elements */}
@@ -73,12 +72,10 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <ChevronDown className="w-8 h-8 text-gray-400" />
       </div>
     </section>
   );
 };
-
 export default Hero;
