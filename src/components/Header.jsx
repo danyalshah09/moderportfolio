@@ -18,6 +18,21 @@ const Header = ({ darkMode, toggleDarkMode }) => {
 
   const [themePreference, setThemePreference] = useState(getCurrentTheme());
 
+  // Function to determine if current theme is dark
+  const isDarkTheme = () => {
+    if (themePreference === 'dark') return true;
+    if (themePreference === 'light') return false;
+    if (themePreference === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  };
+
+  // Get the appropriate logo based on theme
+  const getLogoSrc = () => {
+    return isDarkTheme() ? '/danyalwhite.jpg' : '/danyalblack.jpg';
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -118,9 +133,9 @@ const Header = ({ darkMode, toggleDarkMode }) => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <img
-                src="/danyalblack.jpg"
+                src={getLogoSrc()}
                 alt="Danyal Logo"
-                className="h-8 sm:h-10 w-auto object-contain rounded-lg"
+                className="h-8 sm:h-10 w-auto object-contain rounded-lg transition-all duration-300"
                 onError={(e) => {
                   e.target.style.display = 'none';
                   const nextEl = e.target.nextElementSibling;
@@ -137,7 +152,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-6 ml-8 lg:ml-12">
               {navItems.map((item) => (
                 <button
                   key={item}
