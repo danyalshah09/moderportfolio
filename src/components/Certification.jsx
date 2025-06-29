@@ -17,7 +17,7 @@ const Certifications = () => {
       title: 'Responsive Design',
       issuer: 'freeCodeCamp',
       date: 'August 03, 2024',
-      credentialId: 'JS-2023-002',
+
       description: 'Complete frontend development course covering HTML, CSS, and JavaScript.',
       badge: '⭐',
       verifyUrl: 'https://www.freecodecamp.org/certification/DanyalShah/responsive-web-design'
@@ -26,7 +26,7 @@ const Certifications = () => {
       title: 'JavaScript Algorithms and Data Structures',
       issuer: 'freeCodeCamp',
       date: 'January 25, 2025',
-      credentialId: 'FE-2023-003',
+
       description: 'Comprehensive JavaScript fundamentals and problem-solving techniques.',
       badge: '🎯',
       verifyUrl: 'https://www.freecodecamp.org/certification/DanyalShah/javascript-algorithms-and-data-structures-v8'
@@ -35,7 +35,7 @@ const Certifications = () => {
       title: 'Foundations of User Experience Design',
       issuer: 'Coursera',
       date: 'December 01, 2022',
-      credentialId: 'RWD-2023-004',
+
       description: 'Modern responsive design techniques and CSS frameworks.',
       badge: '⭐',
       verifyUrl: 'https://coursera.org/share/2830ef0613c6e34eaca0abeb4d380643'
@@ -44,7 +44,7 @@ const Certifications = () => {
       title: 'Version Control',
       issuer: 'Coursera',
       date: 'November 17, 2023',
-      credentialId: 'GIT-2023-005',
+
       description: 'Version control, collaboration, and advanced Git workflows.',
       badge: '🔧',
       verifyUrl: 'https://coursera.org/share/243536929ae03e1a63b38cbe5c5699c8'
@@ -107,9 +107,7 @@ const Certifications = () => {
                             <Calendar className="w-4 h-4 mr-2" />
                             <span>{cert.date}</span>
                           </div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
-                            Credential ID: {cert.credentialId}
-                          </p>
+
                           <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm mb-4">
                             {cert.description}
                           </p>

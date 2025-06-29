@@ -15,7 +15,7 @@ import Experience from './components/Experience';
 import Certifications from './components/Certification';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-
+// import Skills from './components/Skills';
 // Main App Component
 const App = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -74,6 +74,7 @@ const App = () => {
       <Services />
       <Portfolio />
       <Experience />
+      {/* <Skills/> */}
       <Certifications/>
       <Contact />
       <Footer />
