@@ -1,72 +1,99 @@
+import SpotlightCard from '../ui_elements/SpotlightCard.jsx';
 import React from 'react';
-import { Code, Palette, Smartphone,Brain, Globe } from 'lucide-react';
-// Services Section Component
-const Services = () => {
-  const services = [
+import { Code, Palette, Database, Smartphone, Brain, Globe, Zap, Settings } from 'lucide-react';
+
+// Skills Section Component
+const Skills = () => {
+  const skills = [
     {
-      icon: <Code className="w-8 h-8" />,
+      icon: <Code className="w-8 h-8 text-blue-400" />,
       title: 'Frontend Development',
-      description: 'Building responsive and interactive web applications using modern frameworks and libraries.',
-      features: ['React Development', 'Next.js Applications', 'JavaScript ES6+', 'TypeScript Integration']
+      description: 'Building modern, responsive web applications with cutting-edge technologies.',
+      features: ['React & Next.js', 'JavaScript ES6+', 'TypeScript', 'Tailwind CSS'],
+      spotlightColor: 'rgba(59, 130, 246, 0.3)' // Blue
+    },
+
+    {
+      icon: <Database className="w-8 h-8 text-green-400" />,
+      title: 'Backend Development',
+      description: 'Developing robust server-side applications and APIs with modern frameworks.',
+      features: ['Node.js & Express', 'Python & Django', 'PostgreSQL & MongoDB', 'REST & GraphQL'],
+      spotlightColor: 'rgba(16, 185, 129, 0.3)' // Green
     },
     {
-      icon: <Palette className="w-8 h-8" />,
-      title: 'UI/UX Design',
-      description: 'Creating beautiful and intuitive user interfaces with focus on user experience.',
-      features: ['Responsive Design', 'User Interface', 'Prototyping', 'Design Systems']
+      icon: <Brain className="w-8 h-8 text-orange-400" />,
+      title: 'AI & Machine Learning',
+      description: 'Implementing intelligent solutions using machine learning and AI technologies.',
+      features: ['Python & TensorFlow', 'Model Training', 'NLP & Computer Vision', 'AI Integration'],
+      spotlightColor: 'rgba(245, 158, 11, 0.3)' // Orange
     },
-   {
-  icon: <Brain className="w-8 h-8" />, // Make sure you have a suitable Brain or AI-related icon
-  title: 'AI Services',
-  description: 'Providing end-to-end AI solutions including model training, fine-tuning, and deployment.',
-  features: ['Model Training', 'Model Fine-tuning', 'ML Model Deployment', 'Custom AI Solutions']
-},
-{
-      icon: <Globe className="w-8 h-8" />,
+
+    {
+      icon: <Globe className="w-8 h-8 text-cyan-400" />,
       title: 'Web Optimization',
-      description: 'Optimizing websites for performance, SEO, and better user experience.',
-      features: ['Performance Optimization', 'SEO Implementation', 'Accessibility', 'Core Web Vitals']
+      description: 'Optimizing web applications for performance, SEO, and accessibility.',
+      features: ['Core Web Vitals', 'SEO Best Practices', 'Accessibility Standards', 'Performance Tuning'],
+      spotlightColor: 'rgba(6, 182, 212, 0.3)' // Cyan
     }
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50 dark:bg-gray-800">
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Services
+    <section className="py-20 px-4 bg-white dark:bg-gray-900">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Skills
           </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            A comprehensive overview of my technical expertise and capabilities across various domains
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group"
-              >
-                <div className="text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+          {skills.map((skill, index) => (
+            <SpotlightCard
+              key={index}
+              className="group cursor-pointer"
+              spotlightColor={skill.spotlightColor}
+            >
+              <div className="p-8 h-full flex flex-col bg-white dark:bg-gray-800 rounded-lg transition-colors duration-300">
+                <div className="flex items-center mb-6">
+                  <div className={`icon-container p-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 mr-4 relative transition-all duration-300
+                    ${index === 0 ? 'group-hover:bg-blue-500/10 group-hover:border-blue-400' : ''}
+                    ${index === 1 ? 'group-hover:bg-purple-500/10 group-hover:border-purple-400' : ''}
+                    ${index === 2 ? 'group-hover:bg-green-500/10 group-hover:border-green-400' : ''}
+                    ${index === 3 ? 'group-hover:bg-orange-500/10 group-hover:border-orange-400' : ''}
+                    ${index === 4 ? 'group-hover:bg-pink-500/10 group-hover:border-pink-400' : ''}
+                    ${index === 5 ? 'group-hover:bg-cyan-500/10 group-hover:border-cyan-400' : ''}
+                    ${index === 6 ? 'group-hover:bg-yellow-500/10 group-hover:border-yellow-400' : ''}
+                    ${index === 7 ? 'group-hover:bg-indigo-500/10 group-hover:border-indigo-400' : ''}
+                    dark:group-hover:bg-gray-600`}>
+                    {skill.icon}
+                  </div>
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                    {skill.title}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
-                  {service.title}
-                </h3>
+
                 <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  {service.description}
+                  {skill.description}
                 </p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+
+                <ul className="space-y-3 flex-grow">
+                  {skill.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-gray-700 dark:text-gray-300">
+                      <span className="w-2 h-2 bg-blue-500 dark:bg-blue-400 rounded-full mr-3 flex-shrink-0"></span>
                       {feature}
                     </li>
                   ))}
                 </ul>
               </div>
-            ))}
-          </div>
+            </SpotlightCard>
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-export default Services;
+export default Skills;

@@ -1,15 +1,108 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { gsap } from 'gsap';
+
 // Hero Section Component
 const Hero = () => {
   const [text, setText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const roles = ['Frontend Developer', 'React Specialist', 'UI/UX Enthusiast', 'Problem Solver','Gen AI Learner'];
+  const roles = ['Frontend Developer', 'React Specialist', 'AI Enthusiast', 'Problem Solver'];
 
+  // Refs for GSAP animations
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const buttonsRef = useRef(null);
+  const chevronRef = useRef(null);
+  const backgroundRef = useRef(null);
+
+  // GSAP animations on component mount
+  useEffect(() => {
+    const tl = gsap.timeline();
+
+    // Set initial states
+    gsap.set([titleRef.current, subtitleRef.current, descriptionRef.current], {
+      opacity: 0,
+      y: 30
+    });
+
+    gsap.set(buttonsRef.current, {
+      opacity: 0,
+      y: 60 // Start further down for the slide-up effect
+    });
+
+    gsap.set(chevronRef.current, {
+      opacity: 0,
+      y: 20
+    });
+
+    gsap.set(backgroundRef.current, {
+      opacity: 0,
+      scale: 0.8
+    });
+
+    // Animate elements in sequence
+    tl.to(backgroundRef.current, {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      ease: "power2.out"
+    })
+    .to(titleRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    }, "-=0.6")
+    .to(subtitleRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    }, "-=0.4")
+    .to(descriptionRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    }, "-=0.4")
+    .to(buttonsRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out"
+    }, "-=0.2")
+    .to(chevronRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.3");
+
+    // Add a subtle stagger animation to the buttons
+    gsap.fromTo(buttonsRef.current.children,
+      {
+        opacity: 0,
+        y: 40,
+        scale: 0.8
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.6,
+        ease: "back.out(1.7)",
+        stagger: 0.2,
+        delay: 1.8 // Start after the main button container animation
+      }
+    );
+
+  }, []);
+
+  // Typing animation effect
   useEffect(() => {
     const currentRole = roles[currentIndex];
     let charIndex = 0;
-
     const typeInterval = setInterval(() => {
       if (charIndex < currentRole.length) {
         setText(currentRole.slice(0, charIndex + 1));
@@ -29,13 +122,13 @@ const Hero = () => {
         }, 2000);
       }
     }, 100);
-
     return () => clearInterval(typeInterval);
   }, [currentIndex]);
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Animated Background Elements */}
-      <div className="absolute inset-0">
+      <div ref={backgroundRef} className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-300/20 rounded-full blur-3xl animate-pulse delay-500"></div>
@@ -43,20 +136,34 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+          <h1
+            ref={titleRef}
+            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
+          >
             Hi, I'm Danyal
           </h1>
-          <div className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-8 h-12">
+
+          <div
+            ref={subtitleRef}
+            className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-8 h-12"
+          >
             <span className="border-r-2 border-blue-600 animate-pulse pr-2">
               {text}
             </span>
           </div>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+
+          <p
+            ref={descriptionRef}
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
+          >
             Crafting beautiful, responsive, and user-friendly web experiences with modern technologies.
             Passionate about clean code and innovative solutions.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div
+            ref={buttonsRef}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
             <button
               onClick={() => document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
@@ -72,10 +179,15 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+
+      <div
+        ref={chevronRef}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+      >
         <ChevronDown className="w-8 h-8 text-gray-400" />
       </div>
     </section>
   );
 };
+
 export default Hero;

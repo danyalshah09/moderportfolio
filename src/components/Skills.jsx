@@ -1,34 +1,117 @@
+"use client"
 
-import React from 'react';
-// Skills Component
+import SpotlightCard from "./ui/spotlight-card"
+import { Code, Database, Brain, Globe } from "lucide-react"
+
+// Skills Section Component
 const Skills = () => {
   const skills = [
-    { name: 'React', level: 95, color: 'bg-blue-500' },
-    { name: 'JavaScript', level: 90, color: 'bg-yellow-500' },
-    { name: 'TypeScript', level: 85, color: 'bg-blue-600' },
-    { name: 'Tailwind CSS', level: 92, color: 'bg-teal-500' },
-    { name: 'Node.js', level: 80, color: 'bg-green-500' },
-    { name: 'Next.js', level: 88, color: 'bg-gray-800' }
-  ];
+    {
+      icon: <Code className="w-8 h-8 text-blue-400" />,
+      title: "Frontend Development",
+      description: "Building modern, responsive web applications with cutting-edge technologies.",
+      features: ["React & Next.js", "JavaScript ES6+", "TypeScript", "Tailwind CSS"],
+      spotlightColor: "rgba(59, 130, 246, 0.3)", // Blue
+      hoverColor: "blue",
+    },
+    {
+      icon: <Database className="w-8 h-8 text-green-400" />,
+      title: "Backend Development",
+      description: "Developing robust server-side applications and APIs with modern frameworks.",
+      features: ["Node.js & Express", "Python & Django", "PostgreSQL & MongoDB", "REST & GraphQL"],
+      spotlightColor: "rgba(16, 185, 129, 0.3)", // Green
+      hoverColor: "green",
+    },
+    {
+      icon: <Brain className="w-8 h-8 text-orange-400" />,
+      title: "AI & Machine Learning",
+      description: "Implementing intelligent solutions using machine learning and AI technologies.",
+      features: ["Python & TensorFlow", "Model Training", "NLP & Computer Vision", "AI Integration"],
+      spotlightColor: "rgba(245, 158, 11, 0.3)", // Orange
+      hoverColor: "orange",
+    },
+    {
+      icon: <Globe className="w-8 h-8 text-cyan-400" />,
+      title: "Web Optimization",
+      description: "Optimizing web applications for performance, SEO, and accessibility.",
+      features: ["Core Web Vitals", "SEO Best Practices", "Accessibility Standards", "Performance Tuning"],
+      spotlightColor: "rgba(6, 182, 212, 0.3)", // Cyan
+      hoverColor: "cyan",
+    },
+  ]
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {skills.map((skill, index) => (
-        <div key={skill.name} className="space-y-2">
-          <div className="flex justify-between">
-            <span className="text-gray-700 dark:text-gray-300 font-medium">{skill.name}</span>
-            <span className="text-gray-600 dark:text-gray-400">{skill.level}%</span>
-          </div>
-          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-            <div
-              className={`h-2 rounded-full ${skill.color} transition-all duration-1000 ease-out`}
-              style={{ width: `${skill.level}%` }}
-            ></div>
-          </div>
+    <section className="py-20 px-4 bg-white dark:bg-gray-900">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Skills</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            A comprehensive overview of my technical expertise and capabilities across various domains
+          </p>
         </div>
-      ))}
-    </div>
-  );
-};
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+          {skills.map((skill, index) => (
+            <SpotlightCard key={index} className="group cursor-pointer" spotlightColor={skill.spotlightColor}>
+              <div className="p-8 h-full flex flex-col bg-white dark:bg-gray-800 rounded-lg transition-all duration-500 relative overflow-hidden">
+                {/* Expanding background circle on hover */}
+                <div
+                  className={`absolute inset-0 rounded-lg transition-all duration-700 ease-out scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-10
+                    ${skill.hoverColor === "blue" ? "bg-blue-500" : ""}
+                    ${skill.hoverColor === "green" ? "bg-green-500" : ""}
+                    ${skill.hoverColor === "orange" ? "bg-orange-500" : ""}
+                    ${skill.hoverColor === "cyan" ? "bg-cyan-500" : ""}
+                  `}
+                />
 
-export default Skills;
+                <div className="flex items-center mb-6 relative z-10">
+                  <div className="icon-container p-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 mr-4 relative transition-all duration-300 overflow-hidden">
+                    {/* Light bluish circle behind icon */}
+                    <div
+                      className="absolute top-1/2 left-1/2 w-6 h-6 bg-blue-200 dark:bg-blue-400 rounded-full opacity-30 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 group-hover:scale-[20] group-hover:opacity-20"
+                      style={{
+                        background:
+                          skill.hoverColor === "blue"
+                            ? "rgb(147, 197, 253)"
+                            : skill.hoverColor === "green"
+                              ? "rgb(134, 239, 172)"
+                              : skill.hoverColor === "orange"
+                                ? "rgb(253, 186, 116)"
+                                : skill.hoverColor === "cyan"
+                                  ? "rgb(165, 243, 252)"
+                                  : "rgb(147, 197, 253)",
+                      }}
+                    />
+                    <div className="relative z-10">{skill.icon}</div>
+                  </div>
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white relative z-10">{skill.title}</h3>
+                </div>
+
+                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed relative z-10">
+                  {skill.description}
+                </p>
+
+                <ul className="space-y-3 flex-grow relative z-10">
+                  {skill.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-gray-700 dark:text-gray-300">
+                      <span
+                        className={`w-2 h-2 rounded-full mr-3 flex-shrink-0 transition-colors duration-300
+                          ${skill.hoverColor === "blue" ? "bg-blue-500 group-hover:bg-blue-400" : ""}
+                          ${skill.hoverColor === "green" ? "bg-green-500 group-hover:bg-green-400" : ""}
+                          ${skill.hoverColor === "orange" ? "bg-orange-500 group-hover:bg-orange-400" : ""}
+                          ${skill.hoverColor === "cyan" ? "bg-cyan-500 group-hover:bg-cyan-400" : ""}
+                        `}
+                      />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </SpotlightCard>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default Skills

@@ -1,36 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Moon, Sun, Monitor } from 'lucide-react';
 
-const Header = ({ darkMode, toggleDarkMode }) => {
+// Create a safe version that can work with or without ThemeContext
+const Header = () => {
+  // Try to import useTheme, but provide fallback if it fails
+  let useTheme;
+  try {
+    const themeContext = require('../contexts/ThemeContext');
+    useTheme = themeContext.useTheme;
+  } catch (error) {
+    console.warn('ThemeContext not found, using fallback theme management');
+    useTheme = null;
+  }
+
+  // Fallback theme management
+  const [fallbackDarkMode, setFallbackDarkMode] = useState(false);
+  const [fallbackThemePreference, setFallbackThemePreference] = useState('system');
+
+  // Use context if available, otherwise use fallback
+  const themeData = useTheme ? useTheme() : null;
+  const darkMode = themeData?.darkMode ?? fallbackDarkMode;
+  const themePreference = themeData?.themePreference ?? fallbackThemePreference;
+  const setTheme = themeData?.setTheme ?? setFallbackThemePreference;
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showThemeSelector, setShowThemeSelector] = useState(false);
 
-  // Get the current theme preference
-  const getCurrentTheme = () => {
-    if (typeof window === 'undefined') return 'light';
-
-    if (!('theme' in localStorage)) {
-      return 'system';
+  // Fallback theme effect
+  useEffect(() => {
+    if (!useTheme) {
+      // Apply fallback theme logic
+      if (typeof window !== 'undefined') {
+        document.documentElement.classList.toggle('dark', fallbackDarkMode);
+      }
     }
-    return localStorage.theme;
-  };
-
-  const [themePreference, setThemePreference] = useState(getCurrentTheme());
-
-  // Function to determine if current theme is dark
-  const isDarkTheme = () => {
-    if (themePreference === 'dark') return true;
-    if (themePreference === 'light') return false;
-    if (themePreference === 'system') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    return false;
-  };
+  }, [fallbackDarkMode, useTheme]);
 
   // Get the appropriate logo based on theme
   const getLogoSrc = () => {
-    return isDarkTheme() ? '/danyalwhite.jpg' : '/danyalblack.jpg';
+    return darkMode ? '/danyalwhite.jpg' : '/danyalblack.jpg';
   };
 
   useEffect(() => {
@@ -88,29 +97,40 @@ const Header = ({ darkMode, toggleDarkMode }) => {
 
   // Handle theme selection
   const handleThemeChange = (theme) => {
-    setThemePreference(theme);
-
-    if (theme === 'dark') {
-      localStorage.theme = 'dark';
-      document.documentElement.classList.add('dark');
-      if (!darkMode) toggleDarkMode();
-    } else if (theme === 'light') {
-      localStorage.theme = 'light';
-      document.documentElement.classList.remove('dark');
-      if (darkMode) toggleDarkMode();
-    } else if (theme === 'system') {
-      localStorage.removeItem('theme');
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.classList.toggle('dark', systemPrefersDark);
-      if (darkMode !== systemPrefersDark) toggleDarkMode();
+    if (useTheme) {
+      setTheme(theme);
+    } else {
+      // Fallback theme handling
+      setFallbackThemePreference(theme);
+      if (theme === 'light') {
+        setFallbackDarkMode(false);
+      } else if (theme === 'dark') {
+        setFallbackDarkMode(true);
+      } else if (theme === 'system') {
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setFallbackDarkMode(systemPrefersDark);
+      }
     }
-
     setShowThemeSelector(false);
   };
 
   // Toggle theme selector visibility
   const toggleThemeSelector = () => {
     setShowThemeSelector(!showThemeSelector);
+  };
+
+  // Get theme icon based on current preference
+  const getThemeIcon = () => {
+    switch (themePreference) {
+      case 'light':
+        return <Sun size={18} />;
+      case 'dark':
+        return <Moon size={18} />;
+      case 'system':
+        return <Monitor size={18} />;
+      default:
+        return <Sun size={18} />;
+    }
   };
 
   return (
@@ -165,14 +185,12 @@ const Header = ({ darkMode, toggleDarkMode }) => {
 
               {/* Theme Toggle Button - Desktop */}
               <div className="relative theme-selector">
-              <button
+                <button
                   onClick={toggleThemeSelector}
-                className="p-2 rounded-full bg-white/20 dark:bg-gray-700/20 backdrop-blur-sm border border-white/30 dark:border-gray-600/30 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/30 transition-all duration-200 hover:scale-110 ml-2"
+                  className="p-2 rounded-full bg-white/20 dark:bg-gray-700/20 backdrop-blur-sm border border-white/30 dark:border-gray-600/30 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/30 transition-all duration-200 hover:scale-110 ml-2"
                   aria-label="Toggle theme selector"
                 >
-                  {themePreference === 'light' && <Sun size={18} />}
-                  {themePreference === 'dark' && <Moon size={18} />}
-                  {themePreference === 'system' && <Monitor size={18} />}
+                  {getThemeIcon()}
                 </button>
 
                 {/* Theme Selector Dropdown */}
@@ -207,7 +225,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                       {themePreference === 'system' && (
                         <span className="ml-auto text-blue-600">✓</span>
                       )}
-              </button>
+                    </button>
                   </div>
                 )}
               </div>
@@ -222,9 +240,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                   className="p-2 rounded-lg bg-white/20 dark:bg-gray-700/20 backdrop-blur-sm border border-white/30 dark:border-gray-600/30 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/30 transition-all duration-200"
                   aria-label="Toggle theme selector"
                 >
-                  {themePreference === 'light' && <Sun size={18} />}
-                  {themePreference === 'dark' && <Moon size={18} />}
-                  {themePreference === 'system' && <Monitor size={18} />}
+                  {getThemeIcon()}
                 </button>
 
                 {/* Mobile Theme Selector Dropdown */}
@@ -250,7 +266,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                         <span className="ml-auto text-blue-600">✓</span>
                       )}
                     </button>
-              <button
+                    <button
                       onClick={() => handleThemeChange('system')}
                       className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
@@ -259,7 +275,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                       {themePreference === 'system' && (
                         <span className="ml-auto text-blue-600">✓</span>
                       )}
-              </button>
+                    </button>
                   </div>
                 )}
               </div>
@@ -333,7 +349,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                       <Moon size={24} className="mb-2" />
                       <span className="text-sm font-medium">Dark</span>
                     </button>
-                  <button
+                    <button
                       onClick={() => handleThemeChange('system')}
                       className={`flex flex-col items-center justify-center p-3 rounded-xl ${
                         themePreference === 'system'
@@ -343,7 +359,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                     >
                       <Monitor size={24} className="mb-2" />
                       <span className="text-sm font-medium">System</span>
-                  </button>
+                    </button>
                   </div>
                 </div>
               </div>
