@@ -6,7 +6,7 @@ import { gsap } from 'gsap';
 const Hero = () => {
   const [text, setText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const roles = ['Frontend Developer', 'React Specialist', 'AI Enthusiast', 'Problem Solver'];
+  const roles = ['Frontend Developer', 'React Specialist',"Software Engineer", 'AI Enthusiast','Problem Solver'];
 
   // Refs for GSAP animations
   const titleRef = useRef(null);
@@ -138,7 +138,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto">
           <h1
             ref={titleRef}
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
+            className="text-5xl md:text-7xl cursor-pointer font-bold mb-6  bg-stone-600  dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
           >
             Hi, I'm Danyal
           </h1>
@@ -166,13 +166,13 @@ const Hero = () => {
           >
             <button
               onClick={() => document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="px-8 cursor-pointer py-4 bg-gradient-to-r from-stone-600  to-stone-400 text-white rounded-full hover:from-stone-700 hover:to-stone-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               See My Work
             </button>
             <button
               onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-full hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-all duration-300 transform hover:scale-105"
+              className="px-8 cursor-pointer py-4 border-2 border-stone-600 text-gray-600 dark:text-blue-400 rounded-full hover:bg-stone-300 hover:text-black dark:hover:bg-blue-600 dark:hover:text-white transition-all duration-300 transform hover:scale-105"
             >
               Get In Touch
             </button>
