@@ -180,73 +180,80 @@ const About = () => {
   };
 
   return (
-    <section ref={sectionRef} id="about" className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2
-            ref={titleRef}
-            className="text-4xl font-bold text-center mb-16 bg-stone-600 bg-clip-text text-transparent"
-          >
-            About Me
-          </h2>
+    <section ref={sectionRef} id="about" className="py-20 ">
+      <div className="container mx-auto px-8 lg:px-16 ">
+        {/* Main content container with border and bulging effect */}
+        <div className="max-w-6xl mx-auto bg-gradient-to-r from-stone-800 via-stone-600 to-stone-700  rounded-4xl p-8 lg:p-12 shadow-2xl transform perspective-1000  transition-transform duration-300 ease-out bg-stone-900 dark:bg-gray-800 relative">
+          {/* Optional: Add a subtle gradient overlay for more depth */}
+          <div className="absolute inset-0 bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-xl pointer-events-none"></div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div ref={textContentRef} className="space-y-6">
-              <h3 className="text-2xl font-semibold text-stone-600 dark:text-white">
-                Passionate Frontend Developer
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                With over 1+ years of experience in frontend development, I specialize in creating engaging user
-                interfaces and seamless user experiences. My journey started with a curiosity about how websites work,
-                and it has evolved into a passion for crafting digital solutions that make a difference.
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                I believe in writing clean, maintainable code and staying up-to-date with the latest technologies and
-                best practices in web development. When I'm not coding, you can find me exploring new design trends or
-                contributing to open-source projects.
-              </p>
-              <div className="flex gap-4">
-                <button
-                  ref={buttonRef}
-                  className="flex items-center gap-2 px-6 py-3 bg-stone-600 text-white rounded-lg hover:bg-stone-800 transition-colors cursor-pointer"
-                  onMouseEnter={() => handleButtonHover(true)}
-                  onMouseLeave={() => handleButtonHover(false)}
-                >
-                  <Download className="w-4 h-4" />
-                  Download CV
-                </button>
+          {/* Content wrapper with relative positioning */}
+          <div className="relative z-10">
+            <h2
+              ref={titleRef}
+              className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-stone-400 to-stone-300 bg-clip-text text-transparent"
+            >
+              About Me
+            </h2>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2  gap-12 items-center">
+              <div ref={textContentRef} className="space-y-6">
+                <h3 className="text-2xl font-semibold text-stone-300 dark:text-white">
+                  Passionate Frontend Developer
+                </h3>
+                <p className="text-stone-400 dark:text-gray-300 leading-relaxed">
+                  With over 1+ years of experience in frontend development, I specialize in creating engaging user
+                  interfaces and seamless user experiences. My journey started with a curiosity about how websites work,
+                  and it has evolved into a passion for crafting digital solutions that make a difference.
+                </p>
+                <p className="text-stone-400 dark:text-gray-300 leading-relaxed">
+                  I believe in writing clean, maintainable code and staying up-to-date with the latest technologies and
+                  best practices in web development. When I'm not coding, you can find me exploring new design trends or
+                  contributing to open-source projects.
+                </p>
+                <div className="flex gap-4">
+                  <button
+                    ref={buttonRef}
+                    className="flex items-center gap-2 px-6 py-3  text-white rounded-lg hover:bg-stone-500 transition-colors cursor-pointer shadow-lg border-2 border-stone-500"
+                    onMouseEnter={() => handleButtonHover(true)}
+                    onMouseLeave={() => handleButtonHover(false)}
+                  >
+                    <Download className="w-4 h-4" />
+                    Download CV
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div ref={imageContainerRef} className="space-y-8">
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
-                <h4 className="text-xl font-semibold mb-6 text-gray-800 dark:text-white"></h4>
-                <div className="flex justify-center relative">
-                  {/* Orb Background Container */}
-                  <div className="relative w-80 h-80">
-                    {/* Orb Component as Background */}
-                    <div ref={orbRef} className="absolute inset-0 w-full h-full">
-                      <Orb
-                        hoverIntensity={0}
-                        rotateOnHover={false}
-                        hue={220} // Blue hue to match your theme
-                        forceHoverState={false}
-                      />
-                    </div>
-                    {/* Image Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <img
-                        ref={imageRef}
-                        src="/linkedin4.jpg"
-                        alt="Danyal Shah - Frontend Developer"
-                        className="rounded-full object-cover shadow-lg border-4 border-white dark:border-gray-700 relative z-10 transition-all duration-500 ease-in-out cursor-pointer"
-                        style={{
-                          width: "192px",
-                          height: "192px",
-                        }}
-                        onMouseEnter={() => handleImageHover(true)}
-                        onMouseLeave={() => handleImageHover(false)}
-                      />
+              <div ref={imageContainerRef} className="space-y-8">
+                <div className=" dark:bg-gray-700 p-6 rounded-xl  dark:border-gray-600">
+                  <h4 className="text-xl font-semibold mb-6 text-stone-300 dark:text-white"></h4>
+                  <div className="flex justify-center relative">
+                    {/* Orb Background Container */}
+                    <div className="relative w-100 h-100">
+                      {/* Orb Component as Background */}
+                      <div ref={orbRef} className="absolute inset-0 w-full h-full">
+                        <Orb
+                          hoverIntensity={0}
+                          rotateOnHover={false}
+                          hue={220} // Blue hue to match your theme
+                          forceHoverState={false}
+                        />
+                      </div>
+                      {/* Image Overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <img
+                          ref={imageRef}
+                          src="/linkedin4.jpg"
+                          alt="Danyal Shah - Frontend Developer"
+                          className="rounded-full object-cover shadow-2xl border-4 border-stone-300 dark:border-gray-500 relative z-10 transition-all duration-500 ease-in-out cursor-pointer"
+                          style={{
+                            width: "192px",
+                            height: "192px",
+                          }}
+                          onMouseEnter={() => handleImageHover(true)}
+                          onMouseLeave={() => handleImageHover(false)}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

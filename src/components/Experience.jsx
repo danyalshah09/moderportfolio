@@ -171,14 +171,14 @@ const Experience = () => {
     <section id="experience" className="py-20 bg-gray-50 dark:bg-gray-800" ref={experienceRef}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-stone-600 to-stone-600 bg-clip-text text-transparent">
             Experience
           </h2>
           <div className="relative">
             {/* Animated Timeline Line */}
             <div
               ref={timelineRef}
-              className="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 h-full w-0.5 bg-blue-600"
+              className="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 h-full w-0.5 bg-stone-500"
             ></div>
 
             {experiences.map((exp, index) => (
@@ -190,13 +190,13 @@ const Experience = () => {
                       className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg ml-8 md:ml-0 hover:shadow-xl transition-shadow duration-300"
                     >
                       <div className="flex items-center mb-2">
-                        <Briefcase className="w-5 h-5 text-blue-600 mr-2" />
-                        <span className="text-blue-600 dark:text-blue-400 text-sm font-medium">{exp.period}</span>
+                        <Briefcase className="w-5 h-5 text-stone-900 mr-2" />
+                        <span className="text-stone-600 dark:text-stone-400 text-sm font-medium">{exp.period}</span>
                       </div>
                       <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-1">
                         {exp.title}
                       </h3>
-                      <h4 className="text-blue-600 dark:text-blue-400 mb-3">{exp.company}</h4>
+                      <h4 className="text-stone-900  italic dark:text-blue-400 mb-3">{exp.company}</h4>
                       <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                         {exp.description}
                       </p>
@@ -206,7 +206,7 @@ const Experience = () => {
                   {/* Animated Circle */}
                   <div
                     ref={addToCirclesRef}
-                    className="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    className="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 w-8 h-8 bg-stone-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300"
                   >
                     <div className="w-4 h-4 bg-white rounded-full"></div>
                   </div>

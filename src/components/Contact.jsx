@@ -29,7 +29,7 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-stone-600 to-stone-600 bg-clip-text text-transparent">
             Get In Touch
           </h2>
 
@@ -47,8 +47,8 @@ const Contact = () => {
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <div className="w-12 h-12 bg-stone-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-stone-600 dark:text-blue-400" />
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800 dark:text-white">Email</h4>
@@ -57,8 +57,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <div className="w-12 h-12 bg-stone-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-stone-600 dark:text-blue-400" />
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800 dark:text-white">Phone</h4>
@@ -67,8 +67,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <div className="w-12 h-12 bg-stone-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-stone-600 dark:text-blue-400" />
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800 dark:text-white">Location</h4>
@@ -139,7 +139,7 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                  className="w-full px-6 py-3 bg-gradient-to-r from-stone-600 via-stone-800 to-stone-600 text-white rounded-lg hover:from-stone-700 hover:to-stone-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
                 >
                   <Send className="w-5 h-5" />
                   <span>Send Message</span>
