@@ -72,17 +72,6 @@ const About = () => {
     }
   }, [])
 
-  // // Enhanced image hover animations
-  // const handleImageHover = (isHovering) => {
-  //   setIsImageHovered(isHovering)
-  //   if (imageRef.current) {
-  //     imageRef.current.style.transition = 'transform 0.5s ease-out'
-  //     imageRef.current.style.transform = isHovering
-  //       ? 'translateY(0) scale(1.1)'
-  //       : 'translateY(0) scale(1)'
-  //   }
-  // }
-
   // Button hover animation
   const handleButtonHover = (isHovering) => {
     if (buttonRef.current) {
@@ -94,20 +83,20 @@ const About = () => {
   }
 
   return (
-    <section ref={sectionRef} id="about" className="py-10">
-      <div className="container mx-auto px-8 lg:px-16">
+    <section ref={sectionRef} id="about" className="py-6 sm:py-8 lg:py-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
         {/* Main content container with exact 3D styling cloned from the image */}
         <div className="max-w-6xl mx-auto relative">
           {/* Outer shadow container for the floating effect */}
           <div
             className="relative"
             style={{
-              filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.25)) drop-shadow(0 12px 24px rgba(0, 0, 0, 0.15))",
+              filter: "drop-shadow(0 10px 25px rgba(0, 0, 0, 0.2)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1))",
             }}
           >
-            {/* Main 3D container - fixed shadow overlays */}
+            {/* Main 3D container - responsive shadow overlays */}
             <div
-              className="relative p-8 lg:p-12 transform transition-transform duration-300 ease-out"
+              className="relative p-4 sm:p-6 md:p-8 lg:p-12 transform transition-transform duration-300 ease-out"
               style={{
                 background: `
                   radial-gradient(ellipse at top, #8b7f75 0%, #78716c 30%),
@@ -122,7 +111,7 @@ const About = () => {
                     #78716c 100%
                   )
                 `,
-                borderRadius: "4rem",
+                borderRadius: "1.5rem",
                 boxShadow: `
                   inset 0 1px 2px rgba(255, 255, 255, 0.2),
                   inset 0 -4px 8px rgba(0, 0, 0, 0.15),
@@ -132,7 +121,7 @@ const About = () => {
                 border: "1px solid rgba(168, 162, 158, 0.3)",
               }}
             >
-              {/* Top glossy highlight - reduced height to prevent overlap */}
+              {/* Top glossy highlight - responsive */}
               <div
                 className="absolute inset-x-0 top-0 pointer-events-none"
                 style={{
@@ -145,28 +134,28 @@ const About = () => {
                       transparent 100%
                     )
                   `,
-                  borderRadius: "4rem 4rem 0 0",
+                  borderRadius: "1.5rem 1.5rem 0 0",
                 }}
               />
 
-              {/* Side highlights for 3D effect */}
+              {/* Side highlights for 3D effect - responsive */}
               <div
-                className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none"
+                className="absolute left-0 top-0 bottom-0 w-4 sm:w-6 lg:w-8 pointer-events-none"
                 style={{
                   background: "linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%)",
-                  borderRadius: "4rem 0 0 4rem",
+                  borderRadius: "1.5rem 0 0 1.5rem",
                 }}
               />
 
               <div
-                className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none"
+                className="absolute right-0 top-0 bottom-0 w-4 sm:w-6 lg:w-8 pointer-events-none"
                 style={{
                   background: "linear-gradient(270deg, rgba(0, 0, 0, 0.1) 0%, transparent 100%)",
-                  borderRadius: "0 4rem 4rem 0",
+                  borderRadius: "0 1.5rem 1.5rem 0",
                 }}
               />
 
-              {/* Bottom shadow for depth - reduced height and opacity */}
+              {/* Bottom shadow for depth - responsive */}
               <div
                 className="absolute inset-x-0 bottom-0 pointer-events-none"
                 style={{
@@ -178,25 +167,25 @@ const About = () => {
                       transparent 100%
                     )
                   `,
-                  borderRadius: "0 0 4rem 4rem",
+                  borderRadius: "0 0 1.5rem 1.5rem",
                 }}
               />
 
               {/* Content wrapper */}
               <div className="relative z-10">
-                <h2 ref={titleRef} className="text-4xl font-bold text-center mb-16 text-white">
+                <h2 ref={titleRef} className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12 lg:mb-16 text-white">
                   About Me
                 </h2>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                  <div ref={textContentRef} className="space-y-6">
-                    <h3 className="text-2xl font-semibold text-stone-100">Frontend Developer</h3>
-                    <p className="text-stone-200 leading-relaxed drop-shadow-sm">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                  <div ref={textContentRef} className="space-y-4 sm:space-y-6 order-2 lg:order-1">
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-stone-100">Frontend Developer</h3>
+                    <p className="text-sm sm:text-base text-stone-200 leading-relaxed drop-shadow-sm">
                       With over 1+ years of experience in frontend development, I specialize in creating engaging user
                       interfaces and seamless user experiences. My journey started with a curiosity about how websites
                       work, and it has evolved into a passion for crafting digital solutions that make a difference.
                     </p>
-                    <p className="text-stone-200 leading-relaxed drop-shadow-sm">
+                    <p className="text-sm sm:text-base text-stone-200 leading-relaxed drop-shadow-sm">
                       I believe in writing clean, maintainable code and staying up-to-date with the latest technologies
                       and best practices in web development. When I'm not coding, you can find me exploring new design
                       trends or contributing to open-source projects.
@@ -204,29 +193,29 @@ const About = () => {
                     <div className="flex gap-4">
                       <button
                         ref={buttonRef}
-                        className="flex items-center gap-2 px-6 py-3 bg-stone-800/80 backdrop-blur-sm text-white rounded-lg hover:bg-stone-700/80 transition-colors cursor-pointer shadow-xl border border-stone-600/50"
-                       >
-                        <Download className="w-4 h-4" />
+                        className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-stone-800/80 backdrop-blur-sm text-white rounded-lg hover:bg-stone-700/80 transition-colors cursor-pointer shadow-xl border border-stone-600/50 text-sm sm:text-base"
+                        onMouseEnter={() => handleButtonHover(true)}
+                        onMouseLeave={() => handleButtonHover(false)}
+                      >
+                        <Download className="w-3 h-3 sm:w-4 sm:h-4" />
                         Download CV
                       </button>
                     </div>
                   </div>
 
-                  <div ref={imageContainerRef}  className="space-y-8">
-                    <div className="p-6">
+                  <div ref={imageContainerRef} className="space-y-4 sm:space-y-8 order-1 lg:order-2">
+                    <div className="p-2 sm:p-4 lg:p-6">
                       <div className="flex justify-center relative">
                         <div className="relative">
                           <img
                             ref={imageRef}
                             src="/linkedin4.jpg"
                             alt="Professional Developer"
-                            className=" object-cover relative z-10 transition-all duration-500 ease-in-out cursor-pointer"
+                            className="object-cover relative z-10 transition-all duration-500 ease-in-out cursor-pointer rounded-lg"
                             style={{
-                              width: "400px",
-                              height: "450px",
+                              width: "280px",
+                              height: "320px",
                             }}
-
-
                           />
                         </div>
                       </div>

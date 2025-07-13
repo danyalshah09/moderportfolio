@@ -1,7 +1,7 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { useState, useRef, useEffect } from "react" // Import useRef and useEffect
-import { gsap } from "gsap" // Import gsap
+import { useState, useRef, useEffect } from "react"
+import { gsap } from "gsap"
 
 interface ProjectCardProps {
   project: {
@@ -15,8 +15,8 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
-  const imageRef = useRef(null) // Ref for the image
-  const titleRef = useRef(null) // Ref for the title
+  const imageRef = useRef(null)
+  const titleRef = useRef(null)
 
   useEffect(() => {
     if (!imageRef.current || !titleRef.current) return;
@@ -51,7 +51,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       onClick={onClick}
       className={
         [
-          "relative group cursor-pointer rounded-xl overflow-hidden shadow-lg transition-all duration-300",
+          "relative group cursor-pointer rounded-lg sm:rounded-xl overflow-hidden shadow-lg transition-all duration-300",
           "bg-stone-800/60 border border-stone-700/50 hover:border-stone-600/80",
           "transform hover:scale-[1.02] hover:shadow-xl"
         ].join(" ")
@@ -61,7 +61,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       whileHover={{ scale: 1.01 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-      <div className="relative w-full h-56 overflow-hidden">
+      <div className="relative w-full h-40 sm:h-48 md:h-56 overflow-hidden">
         <img
           ref={imageRef}
           src={project.image || "/placeholder.svg"}
@@ -70,7 +70,10 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           className="transition-transform duration-300 group-hover:scale-105 rounded-lg w-full h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-        <h3 ref={titleRef} className="absolute bottom-4 left-4 text-xl font-bold text-white z-10">
+        <h3
+          ref={titleRef}
+          className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 text-base sm:text-lg lg:text-xl font-bold text-white z-10 pr-2"
+        >
           {project.title}
         </h3>
       </div>
@@ -80,11 +83,14 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
         initial={{ y: "100%", opacity: 0 }}
         animate={{ y: isHovered ? "0%" : "100%", opacity: isHovered ? 1 : 0 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="absolute inset-0 bg-stone-900/90 backdrop-blur-sm flex flex-col justify-end p-4 z-20"
+        className="absolute inset-0 bg-stone-900/90 backdrop-blur-sm flex flex-col justify-end p-2 sm:p-4 z-20"
       >
-        <div className="flex flex-wrap gap-1">
+        <div className="flex flex-wrap gap-1 sm:gap-2">
           {project.technologies.map((tech, idx) => (
-            <span key={idx} className="px-2 py-1 bg-stone-700 text-stone-200 text-xs rounded-full font-medium">
+            <span
+              key={idx}
+              className="px-2 py-1 bg-stone-700 text-stone-200 text-xs sm:text-sm rounded-full font-medium"
+            >
               {tech}
             </span>
           ))}

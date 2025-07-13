@@ -18,7 +18,7 @@ const Services = () => {
 
   const skills = [
     {
-      icon: <Code className="w-8 h-8 text-stone-300" />,
+      icon: <Code className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-stone-300" />,
       title: "Frontend Development",
       description: "Building modern, responsive web applications with cutting-edge technologies.",
       features: ["React & Next.js", "JavaScript ES6+", "TypeScript", "Tailwind CSS"],
@@ -26,7 +26,7 @@ const Services = () => {
       hoverColor: "stone",
     },
     {
-      icon: <Database className="w-8 h-8 text-stone-300" />,
+      icon: <Database className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-stone-300" />,
       title: "Backend Development",
       description: "Developing robust server-side applications and APIs with modern frameworks.",
       features: ["Node.js & Express", "Python & Django", "PostgreSQL & MongoDB", "REST & GraphQL"],
@@ -34,7 +34,7 @@ const Services = () => {
       hoverColor: "stone",
     },
     {
-      icon: <Brain className="w-8 h-8 text-stone-300" />,
+      icon: <Brain className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-stone-300" />,
       title: "AI & Machine Learning",
       description: "Implementing intelligent solutions using machine learning and AI technologies.",
       features: ["Python & TensorFlow", "Model Training", "NLP & Computer Vision", "AI Integration"],
@@ -42,7 +42,7 @@ const Services = () => {
       hoverColor: "stone",
     },
     {
-      icon: <Globe className="w-8 h-8 text-stone-300" />,
+      icon: <Globe className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-stone-300" />,
       title: "Web Optimization",
       description: "Optimizing web applications for performance, SEO, and accessibility.",
       features: ["Core Web Vitals", "SEO Best Practices", "Accessibility Standards", "Performance Tuning"],
@@ -135,37 +135,34 @@ const Services = () => {
   }
 
   return (
-    <section ref={sectionRef} id="skills" className="py-20">
-      <div className="container mx-auto px-8 lg:px-16">
+    <section ref={sectionRef} id="skills" className="py-8 sm:py-12 lg:py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
         {/* Main content container with unique and catchy background */}
         <div className="max-w-6xl mx-auto relative">
           {/* Outer shadow container for the floating effect */}
           <div
             className="relative"
             style={{
-              filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.25)) drop-shadow(0 12px 24px rgba(0, 0, 0, 0.15))",
+              filter: "drop-shadow(0 10px 25px rgba(0, 0, 0, 0.2)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1))",
             }}
           >
             {/* Unique background styling */}
-            <div
-              className="relative p-8 lg:p-12 transform transition-transform duration-300 ease-out"
-
-            >
+            <div className="relative p-4 sm:p-6 md:p-8 lg:p-12 transform transition-transform duration-300 ease-out">
               {/* Content wrapper */}
               <div className="relative z-10">
-                <div className="text-center mb-16">
-                  <h2 ref={titleRef} className="text-4xl font-bold text-center mb-4 text-stone-600 drop-shadow-lg">
+                <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+                  <h2 ref={titleRef} className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-3 sm:mb-4 text-stone-600 drop-shadow-lg">
                     Services
                   </h2>
                   <p
                     ref={subtitleRef}
-                    className="text-lg text-stone-800 max-w-2xl mx-auto leading-relaxed drop-shadow-sm"
+                    className="text-sm sm:text-base lg:text-lg text-stone-800 max-w-2xl mx-auto leading-relaxed drop-shadow-sm px-4 sm:px-0"
                   >
                     A comprehensive overview of my technical capabilities and the tools I master to build impactful
                     digital solutions.
                   </p>
                 </div>
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                   {skills.map((skill, index) => (
                     <div
                       key={index}
@@ -174,7 +171,7 @@ const Services = () => {
                       onMouseLeave={() => handleCardHover(cardsRef.current[index], false)}
                     >
                       <SpotlightCard className="group cursor-pointer h-full" spotlightColor={skill.spotlightColor}>
-                        <div className="p-8 h-full flex flex-col bg-stone-800/60 backdrop-blur-sm rounded-lg transition-all duration-500 relative overflow-hidden border border-stone-700/50">
+                        <div className="p-4 sm:p-6 lg:p-8 h-full flex flex-col bg-stone-800/60 backdrop-blur-sm rounded-lg transition-all duration-500 relative overflow-hidden border border-stone-700/50">
                           {/* Expanding background circle on hover */}
                           <div
                             className={`absolute inset-0 rounded-lg transition-all duration-700 ease-out scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-10`}
@@ -185,29 +182,29 @@ const Services = () => {
                                   : "transparent", // Fallback, though all should be stone now
                             }}
                           />
-                          <div className="flex items-center mb-6 relative z-10">
-                            <div className="icon-container p-3 rounded-lg bg-stone-700/50 border border-stone-600/50 mr-4 relative transition-all duration-300 overflow-hidden backdrop-blur-sm">
+                          <div className="flex items-center mb-4 sm:mb-6 relative z-10">
+                            <div className="icon-container p-2 sm:p-3 rounded-lg bg-stone-700/50 border border-stone-600/50 mr-3 sm:mr-4 relative transition-all duration-300 overflow-hidden backdrop-blur-sm">
                               {/* Light colored circle behind icon */}
                               <div
-                                className="absolute top-1/2 left-1/2 w-6 h-6 rounded-full opacity-30 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 group-hover:scale-[20] group-hover:opacity-20"
+                                className="absolute top-1/2 left-1/2 w-4 h-4 sm:w-6 sm:h-6 rounded-full opacity-30 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 group-hover:scale-[20] group-hover:opacity-20"
                                 style={{
                                   background: "rgba(255, 255, 255, 0.2)", // White for a subtle glow
                                 }}
                               />
                               <div className="relative z-10">{skill.icon}</div>
                             </div>
-                            <h3 className="text-2xl font-semibold text-stone-100 relative z-10 drop-shadow-sm">
+                            <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-stone-100 relative z-10 drop-shadow-sm">
                               {skill.title}
                             </h3>
                           </div>
-                          <p className="text-stone-300 mb-6 leading-relaxed relative z-10 drop-shadow-sm">
+                          <p className="text-sm sm:text-base text-stone-300 mb-4 sm:mb-6 leading-relaxed relative z-10 drop-shadow-sm">
                             {skill.description}
                           </p>
-                          <ul className="space-y-3 flex-grow relative z-10">
+                          <ul className="space-y-2 sm:space-y-3 flex-grow relative z-10">
                             {skill.features.map((feature, idx) => (
-                              <li key={idx} className="flex items-center text-stone-300">
+                              <li key={idx} className="flex items-center text-sm sm:text-base text-stone-300">
                                 <span
-                                  className={`w-2 h-2 rounded-full mr-3 flex-shrink-0 transition-colors duration-300 bg-stone-400 group-hover:bg-stone-300`}
+                                  className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full mr-2 sm:mr-3 flex-shrink-0 transition-colors duration-300 bg-stone-400 group-hover:bg-stone-300`}
                                 />
                                 {feature}
                               </li>
