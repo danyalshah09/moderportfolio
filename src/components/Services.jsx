@@ -149,20 +149,7 @@ const Services = () => {
             {/* Unique background styling */}
             <div
               className="relative p-8 lg:p-12 transform transition-transform duration-300 ease-out"
-              style={{
-                background: `
-                  #1a1a1a, /* Very dark base */
-                  radial-gradient(circle at 50% 0%, rgba(120, 113, 108, 0.1) 0%, transparent 70%), /* Subtle top glow */
-                  radial-gradient(circle at 50% 100%, rgba(120, 113, 108, 0.05) 0%, transparent 70%), /* Subtle bottom glow */
-                  linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), /* Fine horizontal lines for noise */
-                  linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px) /* Fine vertical lines for noise */
-                `,
-                backgroundSize: "100% 100%, 100% 100%, 4px 4px, 4px 4px",
-                backgroundPosition: "0 0, 0 0, 0 0, 0 0",
-                borderRadius: "2rem", // Slightly less rounded for a different feel
-                boxShadow: "0 10px 30px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.3)", // Simpler, deeper shadow
-                border: "1px solid rgba(255,255,255,0.05)", // Very subtle border
-              }}
+
             >
               {/* Content wrapper */}
               <div className="relative z-10">
