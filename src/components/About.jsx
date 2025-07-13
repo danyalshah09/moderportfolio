@@ -126,14 +126,7 @@ const About = () => {
                 className="absolute inset-x-0 top-0 pointer-events-none"
                 style={{
                   height: "35%",
-                  background: `
-                    radial-gradient(ellipse at center top,
-                      rgba(255, 255, 255, 0.5) 0%,
-                      rgba(255, 255, 255, 0.3) 30%,
-                      rgba(255, 255, 255, 0.1) 60%,
-                      transparent 100%
-                    )
-                  `,
+
                   borderRadius: "1.5rem 1.5rem 0 0",
                 }}
               />
@@ -160,13 +153,7 @@ const About = () => {
                 className="absolute inset-x-0 bottom-0 pointer-events-none"
                 style={{
                   height: "20%",
-                  background: `
-                    radial-gradient(ellipse at center bottom,
-                      rgba(0, 0, 0, 0.2) 0%,
-                      rgba(0, 0, 0, 0.1) 40%,
-                      transparent 100%
-                    )
-                  `,
+
                   borderRadius: "0 0 1.5rem 1.5rem",
                 }}
               />
@@ -181,7 +168,7 @@ const About = () => {
                   <div ref={textContentRef} className="space-y-4 sm:space-y-6 order-2 lg:order-1">
                     <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-stone-100">Frontend Developer</h3>
                     <p className="text-sm sm:text-base text-stone-200 leading-relaxed drop-shadow-sm">
-                      With over 1+ years of experience in frontend development, I specialize in creating engaging user
+                      With over 3+ years of experience in frontend development, I specialize in creating engaging user
                       interfaces and seamless user experiences. My journey started with a curiosity about how websites
                       work, and it has evolved into a passion for crafting digital solutions that make a difference.
                     </p>
