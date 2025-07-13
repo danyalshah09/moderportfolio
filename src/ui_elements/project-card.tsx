@@ -1,14 +1,12 @@
-"use client"
-
-import React from "react";
-import { motion } from "framer-motion";
-// import { cn } from "@/lib/utils" // Uncomment if this file exists
+import React from "react"
+import { motion } from "framer-motion"
+import { useState, useRef, useEffect } from "react" // Import useRef and useEffect
+import { gsap } from "gsap" // Import gsap
 
 interface ProjectCardProps {
   project: {
     id: number
     title: string
-    shortDescription: string
     image: string
     technologies: string[]
   }
@@ -16,40 +14,82 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
+  const [isHovered, setIsHovered] = useState(false)
+  const imageRef = useRef(null) // Ref for the image
+  const titleRef = useRef(null) // Ref for the title
+
+  useEffect(() => {
+    if (!imageRef.current || !titleRef.current) return;
+    // Initial animation for image and title when the card mounts
+    gsap.set([imageRef.current, titleRef.current], { opacity: 0, y: 20 });
+
+    const imgTween = gsap.to(imageRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power3.out",
+      delay: 0.1, // Slight delay for image
+    });
+
+    const titleTween = gsap.to(titleRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power3.out",
+      delay: 0.2, // Slight delay for title after image
+    });
+
+    return () => {
+      imgTween.kill();
+      titleTween.kill();
+    };
+  }, []);
+
   return (
     <motion.div
       layoutId={`project-card-${project.id}`}
       onClick={onClick}
       className={
-        "relative group cursor-pointer rounded-xl overflow-hidden shadow-lg transition-all duration-300 bg-stone-800/60 border border-stone-700/50 hover:border-stone-600/80 transform hover:scale-[1.02] hover:shadow-xl"
+        [
+          "relative group cursor-pointer rounded-xl overflow-hidden shadow-lg transition-all duration-300",
+          "bg-stone-800/60 border border-stone-700/50 hover:border-stone-600/80",
+          "transform hover:scale-[1.02] hover:shadow-xl"
+        ].join(" ")
       }
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       whileHover={{ scale: 1.01 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
       <div className="relative w-full h-56 overflow-hidden">
         <img
+          ref={imageRef}
           src={project.image || "/placeholder.svg"}
           alt={project.title}
-          className="w-full h-full object-cover"
+          style={{ objectFit: "cover" }}
+          className="transition-transform duration-300 group-hover:scale-105 rounded-lg w-full h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-        <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white z-10">{project.title}</h3>
+        <h3 ref={titleRef} className="absolute bottom-4 left-4 text-xl font-bold text-white z-10">
+          {project.title}
+        </h3>
       </div>
-      <div className="p-4">
-        <p className="text-stone-300 text-sm mb-3 line-clamp-2">{project.shortDescription}</p>
+
+      {/* Tech Stack Overlay - slides up on hover */}
+      <motion.div
+        initial={{ y: "100%", opacity: 0 }}
+        animate={{ y: isHovered ? "0%" : "100%", opacity: isHovered ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="absolute inset-0 bg-stone-900/90 backdrop-blur-sm flex flex-col justify-end p-4 z-20"
+      >
         <div className="flex flex-wrap gap-1">
-          {project.technologies.slice(0, 3).map((tech, idx) => (
+          {project.technologies.map((tech, idx) => (
             <span key={idx} className="px-2 py-1 bg-stone-700 text-stone-200 text-xs rounded-full font-medium">
               {tech}
             </span>
           ))}
-          {project.technologies.length > 3 && (
-            <span className="px-2 py-1 bg-stone-700 text-stone-200 text-xs rounded-full">
-              +{project.technologies.length - 3}
-            </span>
-          )}
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   )
 }

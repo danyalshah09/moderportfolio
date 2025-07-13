@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react';
+import { FaDiscord } from 'react-icons/fa';
 
 // Contact Section Component
 const Contact = () => {
@@ -70,6 +71,7 @@ const Contact = () => {
                   <div className="w-12 h-12 bg-stone-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-stone-600 dark:text-blue-400" />
                   </div>
+
                   <div>
                     <h4 className="font-medium text-gray-800 dark:text-white">Location</h4>
                     <p className="text-gray-600 dark:text-gray-300">Gilgit, Pakistan</p>
@@ -78,13 +80,21 @@ const Contact = () => {
               </div>
 
               <div className="flex space-x-4">
-                <a href="#" className="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                <a href="
+https://www.linkedin.com/in/danyalshah/" className="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
                   <Linkedin className="w-6 h-6" />
                 </a>
-                <a href="#" className="w-12 h-12 bg-gray-800 text-white rounded-lg flex items-center justify-center hover:bg-gray-900 transition-colors">
+                <a href="https://github.com/danyalshah09" className="w-12 h-12 bg-gray-800 text-white rounded-lg flex items-center justify-center hover:bg-gray-900 transition-colors">
                   <Github className="w-6 h-6" />
                 </a>
+                <a href="https://discord.gg/dY9UKzJc" className="w-12 h-12 bg-indigo-600 text-white rounded-lg flex items-center justify-center hover:bg-indigo-700 transition-colors">
+  <FaDiscord className="w-6 h-6" />
+</a>
+
+
               </div>
+
+
             </div>
 
             <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl">

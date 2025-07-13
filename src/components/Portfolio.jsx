@@ -13,7 +13,7 @@ const Portfolio = () => {
       id: 1,
       title: "Passu Tourist Lodge",
       shortDescription: "A comprehensive hotel booking platform for remote mountain tourism",
-      image: "/placeholder.svg?height=400&width=600", // Placeholder image
+      image: "ptl.PNG", // Placeholder image
       technologies: ["React.js", "TailwindCSS", "Node.js", "MongoDB", "Express.js"],
       liveUrl: "https://passutouristlodge.vercel.app",
       githubUrl: "#",
@@ -38,7 +38,7 @@ const Portfolio = () => {
       id: 2,
       title: "Hunza Haus",
       shortDescription: "A modern e-commerce platform showcasing authentic Hunza Valley products",
-      image: "/placeholder.svg?height=400&width=600", // Placeholder image
+      image: "/hunzahaus.PNG", // Placeholder image
       technologies: ["React", "Material-UI", "Socket.io"],
       liveUrl: "https://hunza-haus.vercel.app",
       githubUrl: "#",
@@ -64,7 +64,7 @@ const Portfolio = () => {
       id: 3,
       title: "Learning Management System",
       shortDescription: "Complete educational platform with course management",
-      image: "/placeholder.svg?height=400&width=600", // Placeholder image
+      image: "/lms1.PNG", // Placeholder image
       technologies: ["React.js", "Tailwind CSS", "Ant Design", "Node.js", "Express", "MySQL", "Socket.io"],
       liveUrl: "#",
       githubUrl: "#",
@@ -84,7 +84,7 @@ const Portfolio = () => {
       id: 4,
       title: "iNotecloud",
       shortDescription: "Cloud-based note-taking application with collaboration features",
-      image: "/placeholder.svg?height=400&width=600", // Placeholder image
+      image: "/inotecloud.PNG", // Placeholder image
       technologies: ["React", "GSAP", "Tailwind CSS", "Framer Motion"],
       liveUrl: "https://inotecloud1.vercel.app/",
       githubUrl: "#",
@@ -104,7 +104,7 @@ const Portfolio = () => {
       id: 5,
       title: "Writewise",
       shortDescription: "A full-featured blog management system with admin moderation and social sharing",
-      image: "/placeholder.svg?height=400&width=600", // Placeholder image
+      image: "/blog1.PNG", // Placeholder image
       technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
       liveUrl: "#",
       githubUrl: "#",
@@ -133,7 +133,7 @@ const Portfolio = () => {
       title: "SlamIbex",
       shortDescription:
         "A conservation-focused website to promote ethical ibex hunting and support local wildlife efforts.",
-      image: "/placeholder.svg?height=400&width=600", // Placeholder image
+      image: "/ibex2.PNG", // Placeholder image
       technologies: ["Next.js", "Tailwind CSS", "React.js", "Node.js", "Express.js"],
       liveUrl: "#",
       githubUrl: "#",

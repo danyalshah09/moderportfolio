@@ -3,7 +3,7 @@ import { Linkedin, Github, Mail } from 'lucide-react';
 // Footer Component
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className=" text-white py-12">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -11,7 +11,7 @@ const Footer = () => {
               <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
                 dannyDev.
               </div>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 Frontend Developer passionate about creating amazing web experiences
                 with modern technologies and clean code.
               </p>
@@ -20,10 +20,10 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
-                <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
-                <li><a href="#portfolio" className="hover:text-white transition-colors">Portfolio</a></li>
-                <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+                <li><a href="#about" className="hover:text-stone-600 transition-colors">About</a></li>
+                <li><a href="#services" className="hover:text-stone-600 transition-colors">Services</a></li>
+                <li><a href="#portfolio" className="hover:text-stone-600 transition-colors">Portfolio</a></li>
+                <li><a href="#contact" className="hover:text-stone-600 transition-colors">Contact</a></li>
               </ul>
             </div>
 

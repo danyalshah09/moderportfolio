@@ -1,6 +1,4 @@
-"use client"
-
-import React from "react";
+import React from "react"
 import { motion } from "framer-motion"
 import { ExternalLink, Github, X, Code, AlertTriangle, Target, Lightbulb } from "lucide-react"
 
@@ -45,7 +43,8 @@ export default function ProjectDetails({ project, onClose }: ProjectDetailsProps
           <img
             src={project.image || "/placeholder.svg"}
             alt={project.title}
-            className="w-full h-full object-cover rounded-lg"
+            style={{ objectFit: "cover" }}
+            className="rounded-lg w-full h-full"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <h3 className="absolute bottom-4 left-4 text-3xl font-bold text-white z-10">{project.title}</h3>
