@@ -15,6 +15,7 @@ import Experience from './components/Experience';
 import Certifications from './components/Certification';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollToTopButton from './ui_elements/scroll-to-top-button';
 // import Skills from './components/Skills';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 
@@ -33,6 +34,8 @@ const AppContent = () => {
       />
       <Header />
       <Hero />
+      <ScrollToTopButton />
+
       <About />
       <Services />
       <Portfolio />
