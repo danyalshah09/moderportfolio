@@ -1,27 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Moon, Sun, Monitor } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 // Create a safe version that can work with or without ThemeContext
 const Header = () => {
-  // Try to import useTheme, but provide fallback if it fails
-  let useTheme;
-  try {
-    const themeContext = require('../contexts/ThemeContext');
-    useTheme = themeContext.useTheme;
-  } catch (error) {
-    console.warn('ThemeContext not found, using fallback theme management');
-    useTheme = null;
-  }
-
-  // Fallback theme management
-  const [fallbackDarkMode, setFallbackDarkMode] = useState(false);
-  const [fallbackThemePreference, setFallbackThemePreference] = useState('system');
-
   // Use context if available, otherwise use fallback
-  const themeData = useTheme ? useTheme() : null;
-  const darkMode = themeData?.darkMode ?? fallbackDarkMode;
-  const themePreference = themeData?.themePreference ?? fallbackThemePreference;
-  const setTheme = themeData?.setTheme ?? setFallbackThemePreference;
+  const themeData = useTheme();
+  const darkMode = themeData?.darkMode ?? false;
+  const themePreference = themeData?.themePreference ?? 'system';
+  const setTheme = themeData?.setTheme ?? (() => {});
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,10 +19,10 @@ const Header = () => {
     if (!useTheme) {
       // Apply fallback theme logic
       if (typeof window !== 'undefined') {
-        document.documentElement.classList.toggle('dark', fallbackDarkMode);
+        document.documentElement.classList.toggle('dark', false); // Fallback to light
       }
     }
-  }, [fallbackDarkMode, useTheme]);
+  }, [useTheme]);
 
   // Get the appropriate logo based on theme
   const getLogoSrc = () => {
@@ -97,20 +84,7 @@ const Header = () => {
 
   // Handle theme selection
   const handleThemeChange = (theme) => {
-    if (useTheme) {
-      setTheme(theme);
-    } else {
-      // Fallback theme handling
-      setFallbackThemePreference(theme);
-      if (theme === 'light') {
-        setFallbackDarkMode(false);
-      } else if (theme === 'dark') {
-        setFallbackDarkMode(true);
-      } else if (theme === 'system') {
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setFallbackDarkMode(systemPrefersDark);
-      }
-    }
+    setTheme(theme);
     setShowThemeSelector(false);
   };
 
