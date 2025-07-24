@@ -144,10 +144,10 @@ const Header = () => {
               ? 'bg-white/20 dark:bg-gray-900/20 backdrop-blur-lg border border-white/30 dark:border-gray-700/30 shadow-2xl'
               : 'bg-white/10 dark:bg-gray-900/10 backdrop-blur-md border border-white/20 dark:border-gray-700/20 shadow-lg'
             }
-            contain-layout-style will-change-auto  flex flex-row bg-orange-400
+            contain-layout-style will-change-auto flex flex-row
           `}
         >
-          <div className="flex items-center justify-center w-full    ">
+          <div className="flex items-center justify-between w-full">
             {/* Logo */}
             <div className="flex-shrink-0">
               <img
@@ -178,11 +178,17 @@ const Header = () => {
 
               {/* Theme Toggle Button - Desktop */}
               <div className="relative theme-selector ml-2 lg:ml-4 xl:ml-6">
-
+                <button
+                  onClick={toggleThemeSelector}
+                  className="p-2 lg:p-2.5 xl:p-3 rounded-full bg-white/20 dark:bg-gray-700/20 backdrop-blur-sm border border-white/30 dark:border-gray-600/30 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/30 transition-all duration-200 hover:scale-110"
+                  aria-label="Toggle theme selector"
+                >
+                  {getThemeIcon()}
+                </button>
 
                 {/* Theme Selector Dropdown */}
                 {showThemeSelector && (
-                  <div className="absolute right-0 mt-6 w-44 lg:w-48 py-2  dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50 theme-selector bg-white dark:bg-dark">
+                  <div className="absolute right-0 mt-6 w-44 lg:w-48 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50 theme-selector">
                     <button
                       onClick={() => handleThemeChange('light')}
                       className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -276,15 +282,6 @@ const Header = () => {
               </button>
             </div>
           </div>
-          <button
-                  onClick={toggleThemeSelector}
-                  className="p-2 lg:p-2.5 xl:p-3 rounded-full  dark:bg-gray-700/20 backdrop-blur-sm border border-white/30 dark:border-gray-600/30 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/30 transition-all duration-200 hover:scale-110"
-                  aria-label="Toggle theme selector"
-                >
-                  {React.cloneElement(getThemeIcon(), {
-                    size: window.innerWidth >= 1536 ? 22 : window.innerWidth >= 1280 ? 20 : 18
-                  })}
-                </button>
         </nav>
       </header>
 
@@ -325,7 +322,7 @@ const Header = () => {
                   <div className="grid grid-cols-3 gap-2 sm:gap-3">
                     <button
                       onClick={() => handleThemeChange('light')}
-                      className={`flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl transition-all duration-200 touch-manipulation ${
+                      className={`flex flex-col items-center justify-between p-3 sm:p-4 rounded-xl transition-all duration-200 touch-manipulation ${
                         themePreference === 'light'
                           ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
                           : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'
