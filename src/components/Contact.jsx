@@ -27,10 +27,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-900">
+    <section id="contact" className="py-20 bg-white dark:bg-black">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-stone-600 to-stone-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-stone-600 to-stone-600 bg-clip-text text-transparent dark:text-white">
             Get In Touch
           </h2>
 
@@ -110,7 +110,7 @@ https://www.linkedin.com/in/danyalshah/" className="w-12 h-12 bg-blue-600 text-w
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors"
                     placeholder="Your Name"
                   />
                 </div>
@@ -126,7 +126,7 @@ https://www.linkedin.com/in/danyalshah/" className="w-12 h-12 bg-blue-600 text-w
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3  dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -142,7 +142,7 @@ https://www.linkedin.com/in/danyalshah/" className="w-12 h-12 bg-blue-600 text-w
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-white border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors resize-none dark:text-white"
                     placeholder="Your message here..."
                   />
                 </div>

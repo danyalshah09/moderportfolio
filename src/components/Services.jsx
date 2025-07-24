@@ -135,7 +135,7 @@ const Services = () => {
   }
 
   return (
-    <section ref={sectionRef} id="skills" className="py-8 sm:py-12 lg:py-20">
+    <section ref={sectionRef} id="skills" className="py-8 sm:py-12 lg:py-20 dark:bg-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
         {/* Main content container with unique and catchy background */}
         <div className="max-w-6xl mx-auto relative">
@@ -151,12 +151,12 @@ const Services = () => {
               {/* Content wrapper */}
               <div className="relative z-10">
                 <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-                  <h2 ref={titleRef} className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-3 sm:mb-4 text-stone-600 drop-shadow-lg">
+                  <h2 ref={titleRef} className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-3 sm:mb-4 text-stone-600 drop-shadow-lg dark:text-white">
                     Services
                   </h2>
                   <p
                     ref={subtitleRef}
-                    className="text-sm sm:text-base lg:text-lg text-stone-800 max-w-2xl mx-auto leading-relaxed drop-shadow-sm px-4 sm:px-0"
+                    className="text-sm sm:text-base lg:text-lg text-stone-800 max-w-2xl mx-auto leading-relaxed drop-shadow-sm px-4 sm:px-0 dark:text-white"
                   >
                     A comprehensive overview of my technical capabilities and the tools I master to build impactful
                     digital solutions.

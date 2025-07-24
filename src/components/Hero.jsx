@@ -130,15 +130,15 @@ const Hero = () => {
       {/* Animated Background Elements */}
       <div ref={backgroundRef} className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-300/20 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-300/20 dark:bg-stone-300 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-300/20 dark:bg-blue-300 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           <h1
             ref={titleRef}
-            className="text-5xl md:text-7xl cursor-pointer font-bold mb-6  bg-stone-600  dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
+            className=" text-5xl md:text-7xl cursor-pointer font-bold mb-6  bg-stone-600 dark:text-white bg-clip-text text-transparent font-special"
           >
             Hi, I'm Danyal
           </h1>
@@ -154,10 +154,10 @@ const Hero = () => {
 
           <p
             ref={descriptionRef}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-gray-600 dark:text-white mb-12 max-w-2xl mx-auto leading-relaxed"
           >
             Crafting beautiful, responsive, and user-friendly web experiences with modern technologies.
-            Passionate about clean code and innovative solutions.
+            Enthusiastic about clean code and innovative solutions.
           </p>
 
           <div
@@ -166,13 +166,13 @@ const Hero = () => {
           >
             <button
               onClick={() => document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 cursor-pointer py-4 bg-gradient-to-r from-stone-600  to-stone-400 text-white rounded-full hover:from-stone-700 hover:to-stone-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="px-8 cursor-pointer py-4 bg-gradient-to-r from-stone-600  to-stone-400 text-white rounded-full hover:from-stone-700 dark:hover:bg-stone-300 hover:to-stone-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               See My Work
             </button>
             <button
               onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 cursor-pointer py-4 border-2 border-stone-600 text-gray-600 dark:text-blue-400 rounded-full hover:bg-stone-300 hover:text-black dark:hover:bg-blue-600 dark:hover:text-white transition-all duration-300 transform hover:scale-105"
+              className="px-8 cursor-pointer py-4 border-2 border-stone-600 text-gray-600 dark:text-white rounded-full hover:bg-stone-300 hover:text-black dark:hover:bg-blue-600 dark:hover:text-white transition-all duration-300 transform hover:scale-105 dark:border-white"
             >
               Get In Touch
             </button>

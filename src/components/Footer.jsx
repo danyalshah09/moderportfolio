@@ -3,7 +3,7 @@ import { Linkedin, Github, Mail } from 'lucide-react';
 // Footer Component
 const Footer = () => {
   return (
-    <footer className=" text-white py-12">
+    <footer className=" text-white py-12 dark:bg-black dark:text-white">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -11,7 +11,7 @@ const Footer = () => {
               <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
                 dannyDev.
               </div>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed dark:text-white">
                 Frontend Developer passionate about creating amazing web experiences
                 with modern technologies and clean code.
               </p>
