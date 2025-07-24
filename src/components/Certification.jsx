@@ -138,7 +138,7 @@ const Certifications = () => {
                             <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white mb-1 leading-tight">
                               {cert.title}
                             </h3>
-                            <p className="text-stone-900 dark:text-blue-400 font-medium text-sm sm:text-base">
+                            <p className="text-stone-900 dark:text-gray-200 dark:black font-medium text-sm sm:text-base">
                               {cert.issuer}
                             </p>
                           </div>
@@ -177,14 +177,15 @@ const Certifications = () => {
             {/* Navigation Arrows - Visible on all screens */}
             <button
               onClick={prevSlide}
-              className="absolute left-2 sm:left-0 top-1/2 transform -translate-y-1/2 sm:-translate-x-4 lg:-translate-x-6 w-10 h-10 lg:w-12 lg:h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors border border-gray-200 dark:border-gray-700 z-10"
+              className="absolute dark:hover:text-white left-2 sm:left-0 top-1/2 transform -translate-y-1/2 sm:-translate-x-4 lg:-translate-x-6 w-10 h-10 lg:w-12 lg:h-12 bg-white  rounded-full shadow-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-blue-600  transition-colors border border-gray-200 dark:border-gray-700 dark:bg-stone-600 z-10"
             >
               <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>
 
             <button
               onClick={nextSlide}
-              className="absolute right-2 sm:right-0 top-1/2 transform -translate-y-1/2 sm:translate-x-4 lg:translate-x-6 w-10 h-10 lg:w-12 lg:h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors border border-gray-200 dark:border-gray-700 z-10"
+              className="absolute dark:bg-stone-600 right-2 sm:right-0 top-1/2 transform -translate-y-1/2 sm:translate-x-4 lg:translate-x-6 w-10 h-10 lg:w-12 lg:h-12 bg-white  rounded-full shadow-lg flex items-center justify-center text-gray-600 dark:text-white hover:text-
+              -600 dark:hover:text-white transition-colors border border-gray-200 dark:border-gray-700 z-10"
             >
               <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>

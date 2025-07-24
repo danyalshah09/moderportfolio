@@ -166,7 +166,7 @@ const Hero = () => {
           >
             <button
               onClick={() => document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 cursor-pointer py-4 bg-gradient-to-r from-stone-600  to-stone-400 text-white rounded-full hover:from-stone-700 dark:hover:bg-stone-300 hover:to-stone-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="px-8 cursor-pointer py-4 bg-gradient-to-r from-stone-600  to-stone-400 text-white rounded-full hover:from-stone-700 dark:hover:bg-white hover:to-stone-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               See My Work
             </button>
