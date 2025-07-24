@@ -48,8 +48,8 @@ const Contact = () => {
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-stone-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-stone-600 dark:text-blue-400" />
+                  <div className="w-12 h-12 bg-stone-100 dark:bg-stone-400 rounded-lg flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-stone-600 dark:text-black" />
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800 dark:text-white">Email</h4>
@@ -58,8 +58,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-stone-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-stone-600 dark:text-blue-400" />
+                  <div className="w-12 h-12 bg-stone-100 dark:bg-stone-400 rounded-lg flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-stone-600 dark:text-black" />
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800 dark:text-white">Phone</h4>
@@ -68,8 +68,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-stone-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-stone-600 dark:text-blue-400" />
+                  <div className="w-12 h-12 bg-stone-100 dark:bg-stone-400 rounded-lg flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-stone-600 dark:text-black" />
                   </div>
 
                   <div>
@@ -79,20 +79,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex space-x-4">
-                <a href="
-https://www.linkedin.com/in/danyalshah/" className="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
-                  <Linkedin className="w-6 h-6" />
-                </a>
-                <a href="https://github.com/danyalshah09" className="w-12 h-12 bg-gray-800 text-white rounded-lg flex items-center justify-center hover:bg-gray-900 transition-colors">
-                  <Github className="w-6 h-6" />
-                </a>
-                <a href="https://discord.gg/dY9UKzJc" className="w-12 h-12 bg-indigo-600 text-white rounded-lg flex items-center justify-center hover:bg-indigo-700 transition-colors">
-  <FaDiscord className="w-6 h-6" />
-</a>
 
-
-              </div>
 
 
             </div>
