@@ -3,7 +3,7 @@ import { Menu, X, Moon, Sun, Monitor } from 'lucide-react';
 
 // Built-in theme hook
 const useTheme = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [themePreference, setThemePreference] = useState('system');
 
   const setTheme = (theme) => {

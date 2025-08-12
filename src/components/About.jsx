@@ -230,7 +230,7 @@ const About = () => {
                     <div ref={textContentRef} className="space-y-4 sm:space-y-6 order-2 lg:order-1">
                       <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-stone-100">Frontend Developer</h3>
                       <p className="text-sm sm:text-base text-stone-200 leading-relaxed drop-shadow-sm">
-                        With over 3+ years of experience in frontend development, I specialize in creating engaging user
+                        With over 1+ years of experience in frontend development, I specialize in creating engaging user
                         interfaces and seamless user experiences. My journey started with a curiosity about how websites
                         work, and it has evolved into a passion for crafting digital solutions that make a difference.
                       </p>
