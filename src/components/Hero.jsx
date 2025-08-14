@@ -136,12 +136,13 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
-          <h1
-            ref={titleRef}
-            className=" text-5xl md:text-7xl cursor-pointer font-bold mb-6  bg-stone-600 dark:text-white bg-clip-text text-transparent font-special"
-          >
-            Hi, I'm Danyal
-          </h1>
+        <h1
+  ref={titleRef}
+  className="text-5xl md:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-stone-700 to-stone-400 font-fancy"
+>
+  Hi, I'm Danyal
+</h1>
+
 
           <div
             ref={subtitleRef}

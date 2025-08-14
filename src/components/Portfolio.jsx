@@ -155,6 +155,65 @@ const Portfolio = () => {
         "Mobile-friendly design",
       ],
     },
+    {
+      id: 7,
+      title: "Nextjs Invoice App",
+      shortDescription:
+        "A comprehensive invoice management system built with Next.js for creating, managing, and tracking business invoices with modern UI and robust functionality.",
+      image: "/invoice-app.PNG", // Invoice app screenshot
+      technologies: ["Next.js", "Tailwind CSS", "Zod", "Next-Auth", "Express.js"],
+      liveUrl: "https://nextjs-dashboard-check.vercel.app/",
+      githubUrl: "#",
+      problem:
+        "Small businesses and freelancers needed a streamlined solution for creating professional invoices, tracking payments, and managing client relationships without the complexity of expensive enterprise software.",
+      approach:
+        "Developed a full-stack invoice application using Next.js with TypeScript for type safety, Tailwind CSS for responsive design, and integrated authentication and database management for secure invoice handling.",
+      difficulties: [
+        "Implementing complex invoice calculations with tax handling and multiple currencies",
+        "Creating a responsive design that works seamlessly across desktop and mobile devices",
+        "Building secure user authentication and data protection for sensitive financial information",
+        "Designing an intuitive user interface that simplifies the invoice creation process",
+      ],
+      features: [
+        "Professional invoice creation and customization",
+        "Client management and contact database",
+        "Payment tracking and status monitoring",
+        "Tax calculation and multiple currency support",
+        "PDF generation and email integration",
+        "Dashboard with analytics and reporting",
+        "Mobile-responsive design",
+        "Secure user authentication",
+      ],
+    },
+
+
+    {
+      id: 8,
+      title: "SlamIbex",
+      shortDescription:
+        "A conservation-focused website to promote ethical ibex hunting and support local wildlife efforts.",
+      image: "/ibex2.PNG", // Placeholder image
+      technologies: ["Next.js", "Tailwind CSS", "React.js", "Node.js", "Express.js"],
+      liveUrl: "#",
+      githubUrl: "#",
+      problem:
+        "The local conservancy committee needed a platform to educate hunters, promote ethical hunting practices, and raise awareness for ibex conservation efforts in the region.",
+      approach:
+        "Designed and developed a responsive web application that showcases conservation goals, hunting regulations, ibex tracking data, and hunter registration to support community-based conservation.",
+      difficulties: [
+        "Presenting hunting data in a conservation-friendly manner",
+        "Integrating interactive maps to visualize ibex distribution",
+        "Communicating both ethical hunting and conservation messaging effectively",
+        "Creating a content structure that appeals to both local communities and international hunters",
+      ],
+      features: [
+        "Conservation mission & story",
+        "Interactive ibex population maps",
+        "Hunter education & registration",
+        "Success stories & photo galleries",
+        "Mobile-friendly design",
+      ],
+    },
   ]
 
   return (
