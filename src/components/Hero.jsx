@@ -1,310 +1,194 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronDown } from 'lucide-react';
+import { gsap } from 'gsap';
 
-// Built-in theme hook
-const useTheme = () => {
-  const [darkMode, setDarkMode] = useState(false);
-  const [themePreference, setThemePreference] = useState('light');
+// Hero Section Component
+const Hero = () => {
+  const [text, setText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const roles = ['Frontend Developer', 'React Specialist',"Software Engineer", 'AI Enthusiast','Problem Solver'];
 
-  const setTheme = (theme) => {
-    setThemePreference(theme);
-    if (theme === 'dark') {
-      setDarkMode(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      setDarkMode(false);
-      document.documentElement.classList.remove('dark');
-    }
-  };
+  // Refs for GSAP animations
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const buttonsRef = useRef(null);
+  const chevronRef = useRef(null);
+  const backgroundRef = useRef(null);
 
-  return { darkMode, themePreference, setTheme };
-};
-
-const Header = () => {
-  const { darkMode, themePreference, setTheme } = useTheme();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [showThemeSelector, setShowThemeSelector] = useState(false);
-
-  // Get the appropriate logo based on theme
-  const getLogoSrc = () => {
-    return darkMode ? '/danyalwhite.jpg' : '/danyalblack.jpg';
-  };
-
+  // GSAP animations on component mount
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const tl = gsap.timeline();
+
+    // Set initial states
+    gsap.set([titleRef.current, subtitleRef.current, descriptionRef.current], {
+      opacity: 0,
+      y: 30
+    });
+
+    gsap.set(buttonsRef.current, {
+      opacity: 0,
+      y: 60 // Start further down for the slide-up effect
+    });
+
+    gsap.set(chevronRef.current, {
+      opacity: 0,
+      y: 20
+    });
+
+    gsap.set(backgroundRef.current, {
+      opacity: 0,
+      scale: 0.8
+    });
+
+    // Animate elements in sequence
+    tl.to(backgroundRef.current, {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      ease: "power2.out"
+    })
+    .to(titleRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    }, "-=0.6")
+    .to(subtitleRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    }, "-=0.4")
+    .to(descriptionRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    }, "-=0.4")
+    .to(buttonsRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out"
+    }, "-=0.2")
+    .to(chevronRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.3");
+
+    // Add a subtle stagger animation to the buttons
+    gsap.fromTo(buttonsRef.current.children,
+      {
+        opacity: 0,
+        y: 40,
+        scale: 0.8
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.6,
+        ease: "back.out(1.7)",
+        stagger: 0.2,
+        delay: 1.8 // Start after the main button container animation
+      }
+    );
+
   }, []);
 
-  // Close mobile menu when window is resized to desktop
+  // Typing animation effect
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsMenuOpen(false);
-        setShowThemeSelector(false);
+    const currentRole = roles[currentIndex];
+    let charIndex = 0;
+    const typeInterval = setInterval(() => {
+      if (charIndex < currentRole.length) {
+        setText(currentRole.slice(0, charIndex + 1));
+        charIndex++;
+      } else {
+        clearInterval(typeInterval);
+        setTimeout(() => {
+          const deleteInterval = setInterval(() => {
+            if (charIndex > 0) {
+              setText(currentRole.slice(0, charIndex - 1));
+              charIndex--;
+            } else {
+              clearInterval(deleteInterval);
+              setCurrentIndex((prev) => (prev + 1) % roles.length);
+            }
+          }, 50);
+        }, 2000);
       }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMenuOpen]);
-
-  // Close theme selector when clicked outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (showThemeSelector && !event.target.closest('.theme-selector')) {
-        setShowThemeSelector(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [showThemeSelector]);
-
-  const navItems = ['About', 'Services', 'Portfolio', 'Experience', 'Certifications', 'Contact'];
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId.toLowerCase());
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false);
-  };
-
-  // Handle theme selection
-  const handleThemeChange = (theme) => {
-    setTheme(theme);
-    setShowThemeSelector(false);
-  };
-
-  // Toggle theme selector visibility
-  const toggleThemeSelector = () => {
-    setShowThemeSelector(!showThemeSelector);
-  };
-
-  // Get theme icon based on current preference
-  const getThemeIcon = () => {
-    return themePreference === 'light' ? <Sun size={18} /> : <Moon size={18} />;
-  };
+    }, 100);
+    return () => clearInterval(typeInterval);
+  }, [currentIndex]);
 
   return (
-    <>
-      {/* Fixed Header */}
-      <header className="fixed top-0 w-full z-50 flex justify-center px-2 sm:px-6">
-        <nav
-          className={`
-            w-full sm:w-11/12 md:w-10/12 lg:w-4/5 xl:w-3/4 2xl:w-2/3
-            max-w-7xl
-            mt-2 sm:mt-4 px-3 sm:px-6 lg:px-8 xl:px-10 py-3 sm:py-4
-            rounded-xl sm:rounded-2xl transition-all duration-300
-            ${isScrolled
-              ? 'bg-white/20 dark:bg-gray-900/20 backdrop-blur-lg border border-white/30 dark:border-gray-700/30 shadow-2xl'
-              : 'bg-white/10 dark:bg-gray-900/10 backdrop-blur-md border border-white/20 dark:border-gray-700/20 shadow-lg'
-            }
-          `}
-        >
-          <div className="flex items-center justify-between w-full h-full">
-            {/* Logo */}
-            <div className="flex-shrink-0 flex items-center">
-              <img
-                src={getLogoSrc()}
-                alt="Danyal Logo"
-                className="h-7 sm:h-8 md:h-9 lg:h-10 xl:h-12 w-auto object-contain rounded-lg transition-all duration-300"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  const nextEl = e.target.nextElementSibling;
-                  if (nextEl) {
-                    nextEl.style.display = 'block';
-                  }
-                }}
-              />
-            </div>
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br dark:bg-black">
+      {/* Animated Background Elements */}
+      <div ref={backgroundRef} className="absolute inset-0">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-300/20 dark:bg-stone-300 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-300/20 dark:bg-blue-300 rounded-full blur-3xl animate-pulse delay-500"></div>
+      </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center justify-center flex-1">
-              <div className="flex items-center space-x-1 lg:space-x-2 xl:space-x-4">
-                {navItems.map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(item)}
-                    className="text-sm lg:text-base xl:text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 hover:scale-105 font-medium px-2 lg:px-3 xl:px-4 py-2 rounded-lg hover:bg-white/10 dark:hover:bg-gray-700/10 whitespace-nowrap"
-                  >
-                    {item}
-                  </button>
-                ))}
-              </div>
-            </div>
+      <div className="container mx-auto px-6 text-center relative z-10">
+        <div className="max-w-4xl mx-auto">
+        <h1
+  ref={titleRef}
+  className="text-5xl md:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-stone-700 to-stone-400 font-fancy"
+>
+  Hi, I'm Danyal
+</h1>
 
-            {/* Desktop Theme Toggle */}
-            <div className="hidden md:flex items-center flex-shrink-0">
-              <div className="relative theme-selector">
-                <button
-                  onClick={toggleThemeSelector}
-                  className="p-2 lg:p-2.5 xl:p-3 rounded-full bg-white/20 dark:bg-gray-700/20 backdrop-blur-sm border border-white/30 dark:border-gray-600/30 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/30 transition-all duration-200 hover:scale-110"
-                  aria-label="Toggle theme selector"
-                >
-                  {getThemeIcon()}
-                </button>
 
-                {/* Theme Selector Dropdown */}
-                {showThemeSelector && (
-                  <div className="absolute right-0 mt-2 w-44 lg:w-48 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50 theme-selector">
-                    <button
-                      onClick={() => handleThemeChange('light')}
-                      className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      <Sun size={16} className="mr-2" />
-                      <span>Light</span>
-                      {themePreference === 'light' && (
-                        <span className="ml-auto text-blue-600">✓</span>
-                      )}
-                    </button>
-                    <button
-                      onClick={() => handleThemeChange('dark')}
-                      className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      <Moon size={16} className="mr-2" />
-                      <span>Dark</span>
-                      {themePreference === 'dark' && (
-                        <span className="ml-auto text-blue-600">✓</span>
-                      )}
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center space-x-2 flex-shrink-0">
-              {/* Theme Toggle Button - Mobile */}
-              <div className="relative theme-selector">
-                <button
-                  onClick={toggleThemeSelector}
-                  className="p-2 rounded-lg bg-white/20 dark:bg-gray-700/20 backdrop-blur-sm border border-white/30 dark:border-gray-600/30 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/30 transition-all duration-200 touch-manipulation"
-                  aria-label="Toggle theme selector"
-                >
-                  {getThemeIcon()}
-                </button>
-
-                {/* Mobile Theme Selector Dropdown */}
-                {showThemeSelector && (
-                  <div className="absolute right-0 mt-2 w-40 sm:w-48 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50 theme-selector">
-                    <button
-                      onClick={() => handleThemeChange('light')}
-                      className="flex items-center w-full px-3 sm:px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      <Sun size={16} className="mr-2" />
-                      <span>Light</span>
-                      {themePreference === 'light' && (
-                        <span className="ml-auto text-blue-600">✓</span>
-                      )}
-                    </button>
-                    <button
-                      onClick={() => handleThemeChange('dark')}
-                      className="flex items-center w-full px-3 sm:px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      <Moon size={16} className="mr-2" />
-                      <span>Dark</span>
-                      {themePreference === 'dark' && (
-                        <span className="ml-auto text-blue-600">✓</span>
-                      )}
-                    </button>
-                  </div>
-                )}
-              </div>
-
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 rounded-lg bg-white/20 dark:bg-gray-700/20 backdrop-blur-sm border border-white/30 dark:border-gray-600/30 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/30 transition-all duration-200 touch-manipulation active:scale-95"
-                aria-label="Toggle mobile menu"
-              >
-                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-              </button>
-            </div>
-          </div>
-        </nav>
-      </header>
-
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div
-          className="fixed inset-0 z-40 md:hidden"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm" />
-
-          {/* Menu Content */}
           <div
-            className="absolute top-16 sm:top-20 left-2 right-2 sm:left-4 sm:right-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-white/30 dark:border-gray-700/30 shadow-2xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
+            ref={subtitleRef}
+            className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-8 h-12"
           >
-            <div className="p-4 sm:p-6">
-              <div className="space-y-1">
-                {navItems.map((item, index) => (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(item)}
-                    className="block w-full text-left text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-3 sm:py-4 px-3 sm:px-4 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-800/50 transition-all duration-200 text-base sm:text-lg font-medium touch-manipulation"
-                    style={{ animationDelay: `${index * 50}ms` }}
-                  >
-                    {item}
-                  </button>
-                ))}
-              </div>
+            <span className="border-r-2 border-blue-600 animate-pulse pr-2">
+              {text}
+            </span>
+          </div>
 
-              {/* Mobile Theme Settings */}
-              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
-                <div className="flex flex-col space-y-3 sm:space-y-4">
-                  <span className="text-gray-700 dark:text-gray-300 font-medium text-sm sm:text-base">
-                    Theme Settings
-                  </span>
-                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                    <button
-                      onClick={() => handleThemeChange('light')}
-                      className={`flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl transition-all duration-200 touch-manipulation ${
-                        themePreference === 'light'
-                          ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
-                          : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'
-                      }`}
-                    >
-                      <Sun size={20} className="mb-1 sm:mb-2" />
-                      <span className="text-xs sm:text-sm font-medium">Light</span>
-                    </button>
-                    <button
-                      onClick={() => handleThemeChange('dark')}
-                      className={`flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl transition-all duration-200 touch-manipulation ${
-                        themePreference === 'dark'
-                          ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
-                          : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'
-                      }`}
-                    >
-                      <Moon size={20} className="mb-1 sm:mb-2" />
-                      <span className="text-xs sm:text-sm font-medium">Dark</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <p
+            ref={descriptionRef}
+            className="text-lg md:text-xl text-gray-600 dark:text-white mb-12 max-w-2xl mx-auto leading-relaxed"
+          >
+            Crafting beautiful, responsive, and user-friendly web experiences with modern technologies.
+            Enthusiastic about clean code and innovative solutions.
+          </p>
+
+          <div
+            ref={buttonsRef}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <button
+              onClick={() => document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 cursor-pointer py-4 bg-gradient-to-r from-stone-600  to-stone-400 text-white rounded-full hover:from-stone-700 dark:hover:bg-white hover:to-stone-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              See My Work
+            </button>
+            <button
+              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 cursor-pointer py-4 border-2 border-stone-600 text-gray-600 dark:text-white rounded-full hover:bg-stone-300 hover:text-black dark:hover:bg-blue-600 dark:hover:text-white transition-all duration-300 transform hover:scale-105 dark:border-white"
+            >
+              Get In Touch
+            </button>
           </div>
         </div>
-      )}
-    </>
+      </div>
+
+      <div
+        ref={chevronRef}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+      >
+        <ChevronDown className="w-8 h-8 text-gray-400" />
+      </div>
+    </section>
   );
 };
 
-export default Header;
+export default Hero;
