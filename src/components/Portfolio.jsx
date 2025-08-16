@@ -16,7 +16,7 @@ const Portfolio = () => {
       image: "ptl.PNG", // Placeholder image
       technologies: ["React.js", "TailwindCSS", "Node.js", "MongoDB", "Express.js"],
       liveUrl: "https://passutouristlodge.vercel.app",
-      githubUrl: "#",
+      githubUrl: "https://github.com/danyalshah09/ptl_react",
       problem:
         "Lodges in remote mountainous regions like Passu often lack online visibility and efficient booking systems. Traditional approaches rely heavily on local PR and physical connections, limiting access to global tourists.",
       approach:
@@ -41,7 +41,7 @@ const Portfolio = () => {
       image: "/hunzahaus.PNG", // Placeholder image
       technologies: ["React", "Material-UI", "Socket.io"],
       liveUrl: "https://hunza-haus.vercel.app",
-      githubUrl: "#",
+      githubUrl: "https://github.com/danyalshah09/HunzaHaus",
       problem:
         "Local artisans and businesses in the Hunza Valley lacked an effective digital marketplace to promote and sell their products globally. Traditional sales methods limited reach and scalability.",
       approach:
@@ -68,6 +68,7 @@ const Portfolio = () => {
       technologies: ["React.js", "Tailwind CSS", "Ant Design", "Node.js", "Express", "MySQL", "Socket.io"],
       liveUrl: "#",
       githubUrl: "#",
+      hideLinks: true,
       problem:
         "Educational institutions needed a comprehensive platform to manage online courses, track student progress, and facilitate remote learning during the digital transformation.",
       approach:
@@ -87,7 +88,7 @@ const Portfolio = () => {
       image: "/inotecloud.PNG", // Placeholder image
       technologies: ["React", "GSAP", "Tailwind CSS", "Framer Motion"],
       liveUrl: "https://inotecloud1.vercel.app/",
-      githubUrl: "#",
+      githubUrl: "https://github.com/danyalshah09/inotecloud",
       problem:
         "Users needed a reliable, cross-platform note-taking solution that could sync across devices and support collaborative editing for team projects.",
       approach:
@@ -108,6 +109,7 @@ const Portfolio = () => {
       technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
       liveUrl: "#",
       githubUrl: "#",
+      hideLinks: true,
       problem:
         "There was a need for a structured blogging platform where users could write, manage, and share content, while admins could moderate and control what gets published.",
       approach:
@@ -137,6 +139,7 @@ const Portfolio = () => {
       technologies: ["Next.js", "Tailwind CSS", "React.js", "Node.js", "Express.js"],
       liveUrl: "#",
       githubUrl: "#",
+      hideLinks: true,
       problem:
         "The local conservancy committee needed a platform to educate hunters, promote ethical hunting practices, and raise awareness for ibex conservation efforts in the region.",
       approach:
@@ -160,10 +163,10 @@ const Portfolio = () => {
       title: "Nextjs Invoice App",
       shortDescription:
         "A comprehensive invoice management system built with Next.js for creating, managing, and tracking business invoices with modern UI and robust functionality.",
-      image: "/invoice-app.PNG", // Invoice app screenshot
+      image: "./nextjs-dashboard.PNG", // Invoice app screenshot
       technologies: ["Next.js", "Tailwind CSS", "Zod", "Next-Auth", "Express.js"],
       liveUrl: "https://nextjs-dashboard-check.vercel.app/",
-      githubUrl: "#",
+      githubUrl: "https://github.com/danyalshah09/nextjs-dashboard",
       problem:
         "Small businesses and freelancers needed a streamlined solution for creating professional invoices, tracking payments, and managing client relationships without the complexity of expensive enterprise software.",
       approach:
@@ -189,31 +192,32 @@ const Portfolio = () => {
 
     {
       id: 8,
-      title: "SlamIbex",
+      title: "AI Jobtracker",
       shortDescription:
-        "A conservation-focused website to promote ethical ibex hunting and support local wildlife efforts.",
-      image: "/ibex2.PNG", // Placeholder image
+      "A modern platform to help users track job applications, manage resumes, and leverage AI for career advancement.",
+      image: "/jobtracker.PNG", // Placeholder image
       technologies: ["Next.js", "Tailwind CSS", "React.js", "Node.js", "Express.js"],
       liveUrl: "#",
       githubUrl: "#",
       problem:
-        "The local conservancy committee needed a platform to educate hunters, promote ethical hunting practices, and raise awareness for ibex conservation efforts in the region.",
+      "Job seekers often struggle to organize their job search, keep track of applications, and optimize their resumes for different roles. There is a need for a centralized tool that streamlines the job application process and provides AI-powered insights.",
       approach:
-        "Designed and developed a responsive web application that showcases conservation goals, hunting regulations, ibex tracking data, and hunter registration to support community-based conservation.",
+      "Developed a responsive web application that allows users to track job applications, analyze and improve their resumes using AI, and receive actionable feedback. The platform integrates modern UI/UX practices and leverages AI to enhance user experience.",
       difficulties: [
-        "Presenting hunting data in a conservation-friendly manner",
-        "Integrating interactive maps to visualize ibex distribution",
-        "Communicating both ethical hunting and conservation messaging effectively",
-        "Creating a content structure that appeals to both local communities and international hunters",
+      "Integrating AI-driven resume analysis and feedback",
+      "Designing an intuitive dashboard for tracking multiple job applications",
+      "Ensuring data privacy and security for sensitive user information",
+      "Balancing feature-richness with a clean, user-friendly interface"
       ],
       features: [
-        "Conservation mission & story",
-        "Interactive ibex population maps",
-        "Hunter education & registration",
-        "Success stories & photo galleries",
-        "Mobile-friendly design",
+      "AI-powered resume checker and suggestions",
+      "Job application tracking dashboard",
+      "Personalized career insights",
+      "Secure user authentication",
+      "Mobile-responsive design"
       ],
-    },
+      }
+
   ]
 
   return (

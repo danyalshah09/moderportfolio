@@ -16,6 +16,7 @@ import Certifications from './components/Certification';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTopButton from './ui_elements/scroll-to-top-button';
+import TechStack from './components/Techstack';
 // import Skills from './components/Skills';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 
@@ -41,6 +42,7 @@ const AppContent = () => {
       <About />
       <Services />
       <Portfolio />
+      <TechStack />
       <Experience />
       {/* <Skills/> */}
       <Certifications />

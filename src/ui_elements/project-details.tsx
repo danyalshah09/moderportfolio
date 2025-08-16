@@ -14,6 +14,7 @@ interface ProjectDetailsProps {
     features: string[]
     liveUrl: string
     githubUrl: string
+    hideLinks?: boolean
   }
   onClose: () => void
 }
@@ -109,26 +110,28 @@ export default function ProjectDetails({ project, onClose }: ProjectDetailsProps
             </div>
           </div>
           {/* Links */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-stone-700">
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-stone-600 text-white rounded-lg hover:bg-stone-700 transition-colors flex-1 justify-center"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Live Demo
-            </a>
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-stone-700 text-white rounded-lg hover:bg-stone-800 transition-colors flex-1 justify-center"
-            >
-              <Github className="w-4 h-4" />
-              GitHub
-            </a>
-          </div>
+          {!project.hideLinks && (
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-stone-700">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-stone-600 text-white rounded-lg hover:bg-stone-700 transition-colors flex-1 justify-center"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Live Demo
+              </a>
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-stone-700 text-white rounded-lg hover:bg-stone-800 transition-colors flex-1 justify-center"
+              >
+                <Github className="w-4 h-4" />
+                GitHub
+              </a>
+            </div>
+          )}
         </div>
       </motion.div>
     </motion.div>

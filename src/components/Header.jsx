@@ -133,51 +133,50 @@ const Header = () => {
   return (
     <>
       {/* Fixed Header */}
-      <header className="fixed top-0 w-full z-50 flex justify-between px-2 sm:px-6 ">
+      <header className="fixed top-0 w-full z-50 flex justify-center px-2 sm:px-6">
         <nav
           className={`
             w-full sm:w-11/12 md:w-10/12 lg:w-4/5 xl:w-3/4 2xl:w-2/3
             max-w-7xl
-            mt-2 sm:mt-4 mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 py-3 sm:py-4
+            mt-2 sm:mt-4 px-3 sm:px-6 lg:px-8 xl:px-10 py-3 sm:py-4
             rounded-xl sm:rounded-2xl transition-all duration-300
             ${isScrolled
               ? 'bg-white/20 dark:bg-gray-900/20 backdrop-blur-lg border border-white/30 dark:border-gray-700/30 shadow-2xl'
               : 'bg-white/10 dark:bg-gray-900/10 backdrop-blur-md border border-white/20 dark:border-gray-700/20 shadow-lg'
             }
-            contain-layout-style will-change-auto flex flex-row
           `}
         >
-          <div className="flex items-center justify-between w-full">
+          <div className="flex items-center justify-between w-full h-full">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 flex items-center">
               <img
                 src={getLogoSrc()}
                 alt="Danyal Logo"
                 className="h-7 sm:h-8 md:h-9 lg:h-10 xl:h-12 w-auto object-contain rounded-lg transition-all duration-300"
                 onError={(e) => {
                   e.target.style.display = 'none';
-                  const nextEl = e.target.nextElementSibling;
-                  if (nextEl) {
-                    nextEl.style.display = 'block';
-                  }
                 }}
               />
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-2 lg:space-x-4 xl:space-x-6 2xl:space-x-8 ml-4 lg:ml-8 xl:ml-12">
-              {navItems.map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className="text-sm lg:text-base xl:text-lg 2xl:text-xl text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 hover:scale-105 font-medium px-2 lg:px-3 xl:px-4 py-1 lg:py-2 rounded-lg hover:bg-white/10 dark:hover:bg-gray-700/10 whitespace-nowrap"
-                >
-                  {item}
-                </button>
-              ))}
+            <div className="hidden md:flex items-center justify-center flex-1">
+              <div className="flex items-center space-x-1 lg:space-x-2 xl:space-x-4">
+                {navItems.map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item)}
+                    className="text-sm lg:text-base xl:text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 hover:scale-105 font-medium px-2 lg:px-3 xl:px-4 py-2 rounded-lg hover:bg-white/10 dark:hover:bg-gray-700/10 whitespace-nowrap"
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-              {/* Theme Toggle Button - Desktop */}
-              <div className="relative theme-selector ml-2 lg:ml-4 xl:ml-6">
+            {/* Desktop Theme Toggle */}
+            <div className="hidden md:flex items-center flex-shrink-0">
+              <div className="relative theme-selector">
                 <button
                   onClick={toggleThemeSelector}
                   className="p-2 lg:p-2.5 xl:p-3 rounded-full bg-white/20 dark:bg-gray-700/20 backdrop-blur-sm border border-white/30 dark:border-gray-600/30 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-gray-600/30 transition-all duration-200 hover:scale-110"
@@ -188,7 +187,7 @@ const Header = () => {
 
                 {/* Theme Selector Dropdown */}
                 {showThemeSelector && (
-                  <div className="absolute right-0 mt-6 w-44 lg:w-48 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50 theme-selector">
+                  <div className="absolute right-0 mt-2 w-44 lg:w-48 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50 theme-selector">
                     <button
                       onClick={() => handleThemeChange('light')}
                       className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -305,7 +304,7 @@ const Header = () => {
                   <button
                     key={item}
                     onClick={() => scrollToSection(item)}
-                    className="block w-full text-left text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-3 sm:py-4 px-3 sm:px-4 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-800/50 transition-all duration-200 text-base sm:text-lg font-medium touch-manipulation animate-slideInFromTop"
+                    className="block w-full text-left text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-3 sm:py-4 px-3 sm:px-4 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-800/50 transition-all duration-200 text-base sm:text-lg font-medium touch-manipulation"
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     {item}
@@ -322,7 +321,7 @@ const Header = () => {
                   <div className="grid grid-cols-3 gap-2 sm:gap-3">
                     <button
                       onClick={() => handleThemeChange('light')}
-                      className={`flex flex-col items-center justify-between p-3 sm:p-4 rounded-xl transition-all duration-200 touch-manipulation ${
+                      className={`flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl transition-all duration-200 touch-manipulation ${
                         themePreference === 'light'
                           ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
                           : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'

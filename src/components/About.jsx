@@ -59,6 +59,8 @@ const About = () => {
   const buttonRef = useRef(null)
   const mainContainerRef = useRef(null)
 
+
+
   useEffect(() => {
     // Simple CSS-based animation function
     const animateElements = () => {
@@ -240,15 +242,17 @@ const About = () => {
                         trends or contributing to open-source projects.
                       </p>
                       <div className="flex gap-4">
-                        <button
-                          ref={buttonRef}
-                          className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-stone-800/80 backdrop-blur-sm text-white rounded-lg hover:bg-stone-700/80 transition-colors cursor-pointer shadow-xl border border-stone-600/50 text-sm sm:text-base"
-                          onMouseEnter={() => handleButtonHover(true)}
+                                                  <a
+                            ref={buttonRef}
+                            href="/resume.pdf"
+                            download="Danyal_Shah_Resume.pdf"
+                            className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-stone-800/80 backdrop-blur-sm text-white rounded-lg hover:bg-stone-700/80 transition-colors cursor-pointer shadow-xl border border-stone-600/50 text-sm sm:text-base"
+                            onMouseEnter={() => handleButtonHover(true)}
                           onMouseLeave={() => handleButtonHover(false)}
                         >
                           <Download className="w-3 h-3 sm:w-4 sm:h-4" />
                           Download CV
-                        </button>
+                        </a>
                       </div>
                     </div>
 
