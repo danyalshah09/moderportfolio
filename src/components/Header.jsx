@@ -1,41 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun, Monitor } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 
 // Built-in theme hook
 const useTheme = () => {
-  const [darkMode, setDarkMode] = useState(true);
-  const [themePreference, setThemePreference] = useState('system');
+  const [darkMode, setDarkMode] = useState(false);
+  const [themePreference, setThemePreference] = useState('light');
 
   const setTheme = (theme) => {
     setThemePreference(theme);
     if (theme === 'dark') {
       setDarkMode(true);
       document.documentElement.classList.add('dark');
-    } else if (theme === 'light') {
+    } else {
       setDarkMode(false);
       document.documentElement.classList.remove('dark');
-    } else {
-      // System preference
-      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setDarkMode(systemDark);
-      document.documentElement.classList.toggle('dark', systemDark);
     }
   };
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = () => {
-      if (themePreference === 'system') {
-        setDarkMode(mediaQuery.matches);
-        document.documentElement.classList.toggle('dark', mediaQuery.matches);
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    handleChange(); // Initial check
-
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [themePreference]);
 
   return { darkMode, themePreference, setTheme };
 };
@@ -118,16 +98,7 @@ const Header = () => {
 
   // Get theme icon based on current preference
   const getThemeIcon = () => {
-    switch (themePreference) {
-      case 'light':
-        return <Sun size={18} />;
-      case 'dark':
-        return <Moon size={18} />;
-      case 'system':
-        return <Monitor size={18} />;
-      default:
-        return <Sun size={18} />;
-    }
+    return themePreference === 'light' ? <Sun size={18} /> : <Moon size={18} />;
   };
 
   return (
@@ -208,16 +179,6 @@ const Header = () => {
                         <span className="ml-auto text-blue-600">✓</span>
                       )}
                     </button>
-                    <button
-                      onClick={() => handleThemeChange('system')}
-                      className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      <Monitor size={16} className="mr-2" />
-                      <span>System</span>
-                      {themePreference === 'system' && (
-                        <span className="ml-auto text-blue-600">✓</span>
-                      )}
-                    </button>
                   </div>
                 )}
               </div>
@@ -255,16 +216,6 @@ const Header = () => {
                       <Moon size={16} className="mr-2" />
                       <span>Dark</span>
                       {themePreference === 'dark' && (
-                        <span className="ml-auto text-blue-600">✓</span>
-                      )}
-                    </button>
-                    <button
-                      onClick={() => handleThemeChange('system')}
-                      className="flex items-center w-full px-3 sm:px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      <Monitor size={16} className="mr-2" />
-                      <span>System</span>
-                      {themePreference === 'system' && (
                         <span className="ml-auto text-blue-600">✓</span>
                       )}
                     </button>
@@ -318,7 +269,7 @@ const Header = () => {
                   <span className="text-gray-700 dark:text-gray-300 font-medium text-sm sm:text-base">
                     Theme Settings
                   </span>
-                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
                     <button
                       onClick={() => handleThemeChange('light')}
                       className={`flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl transition-all duration-200 touch-manipulation ${
@@ -340,17 +291,6 @@ const Header = () => {
                     >
                       <Moon size={20} className="mb-1 sm:mb-2" />
                       <span className="text-xs sm:text-sm font-medium">Dark</span>
-                    </button>
-                    <button
-                      onClick={() => handleThemeChange('system')}
-                      className={`flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl transition-all duration-200 touch-manipulation ${
-                        themePreference === 'system'
-                          ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
-                          : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'
-                      }`}
-                    >
-                      <Monitor size={20} className="mb-1 sm:mb-2" />
-                      <span className="text-xs sm:text-sm font-medium">System</span>
                     </button>
                   </div>
                 </div>
